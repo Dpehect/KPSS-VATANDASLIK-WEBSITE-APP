@@ -16,7 +16,7 @@ export const turkIslamData: EncyclopediaEntry[] = [
       "Birleşmiş Milletler (BM) ve Avrupa Konseyi'nin kurucu üyelerindeniz.",
       "NATO'ya üye kabul tarihimiz 1952'dir; Kore Savaşı'ndaki askeri başarımız üyeliğimizi kolaylaştırmıştır.",
       "Avrupa İnsan Hakları Mahkemesi (AİHM), Avrupa Birliği'nin değil, Türkiye'nin kurucusu olduğu Avrupa Konseyi'nin yargı organıdır.",
-      "Avrupa Birliği (AB) ve Şanghay İşbirliği Örgütü'ne (ŞİÖ) tam üye değiliz."
+      "Avrupa Birliği (AB) ve Şanghay İşbirliği Örgütü'ne tam üye değiliz."
     ],
     "examImportance": "Türkiye'nin NATO'ya giriş yılı (1952) ve sebebi (Kore Savaşı), kurucu üye olduğumuz kuruluşlar (BM, Avrupa Konseyi, İİT, KEİ) ile tam üye olmadığımız örgütler (AB, ŞİÖ) güncel bilgiler ve vatandaşlık genel kültür testlerinin en garanti soru kalıplarındandır."
   },
@@ -39,5 +39,24 @@ export const turkIslamData: EncyclopediaEntry[] = [
       "Kapadokya ve Pamukkale, hem kültürel hem de doğal özellikleri bir arada taşıyan 'karma' miras alanlarımızdır."
     ],
     "examImportance": "Son eklenen UNESCO eserleri (2023 - Gordion ve Ahşap Hipostil Camiler), Göbeklitepe'nin listeye giriş yılı (2018) ve önemi ile karma miras alanlarımız (Kapadokya ve Pamukkale) güncel bilgiler testinde her yıl en yüksek soru potansiyeline sahip kültürel bilgilerdir."
+  },
+  {
+    "id": "turkiye-milli-parklar-listesi",
+    "category": "Güncel Bilgiler",
+    "title": "Milli Parklar ve Coğrafi Varlıklar",
+    "aliases": [
+      "milli parklar", "yozgat camligi", "agri dagi", "ilk milli park", "en buyuk milli park"
+    ],
+    "keywords": [
+      "milli", "park", "yozgat", "ağrı", "tabiat", "coğrafi", "koruma"
+    ],
+    "shortDefinition": "Türkiye'nin sahip olduğu, yasal koruma altındaki milli parklar ve öne çıkan coğrafi rekorlarıdır.",
+    "detailedExplanation": "Türkiye'de doğayı korumak, biyolojik çeşitliliği sürdürmek ve rekreasyon alanları yaratmak amacıyla Tarım ve Orman Bakanlığı bünyesinde çok sayıda milli park ilan edilmiştir. Güncel listeye göre 40'tan fazla milli parkımız bulunmaktadır.\n\nÖnemli Milli Parklar ve Rekorlar:\n- Türkiye'nin İlk Milli Parkı (1958): Yozgat Çamlığı Milli Parkı'dır. İçerisindeki karaçam kalıntıları ve zengin bitki örtüsüyle bilinir.\n- Türkiye'nin En Büyük Milli Parkı: Ağrı Dağı Milli Parkı'dır. 5.137 metre yüksekliğiyle Türkiye'nin en yüksek dağı olan Ağrı Dağı ve çevresini kapsar, yüksek biyolojik çeşitlilik ve buzul göllerine sahiptir.\n- Diğer Önemli Milli Parklar:\n  * Gelibolu Yarımadası Tarihi Milli Parkı (Çanakkale): Çanakkale Savaşları'nın yapıldığı tarihi alanı kapsar.\n  * Nemrut Dağı Milli Parkı (Adıyaman): Kommagene krallığına ait dev heykelleri barındırır.\n  * Göreme Tarihi Milli Parkı (Nevşehir): Kapadokya peri bacaları bölgesindedir.\n  * Beyşehir Gölü Milli Parkı (Konya): Türkiye'nin en büyük tatlı su gölü milli parkıdır.",
+    "keyFacts": [
+      "Türkiye'nin ilk milli parkı Yozgat Çamlığı Milli Parkı'dır (1958).",
+      "Türkiye'nin en büyük milli parkı Ağrı Dağı Milli Parkı'dır.",
+      "Milli park ilan etme yetkisi Cumhurbaşkanı'na aittir."
+    ],
+    "examImportance": "İlk milli park (Yozgat Çamlığı) ve en büyük milli park (Ağrı Dağı) KPSS Genel Kültür ve Coğrafya testlerinin en popüler güncel bilgi sorularındandır."
   }
 ];
