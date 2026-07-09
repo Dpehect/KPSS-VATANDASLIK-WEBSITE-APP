@@ -393,14 +393,23 @@ html[data-theme="dark"] {
 
 /* Hardcoded solid light background buttons must always use dark text for contrast */
 :is(button, a, [role="button"]):where(
-  [class*="bg-white"],
-  [class*="bg-slate-50"], [class*="bg-slate-100"], [class*="bg-slate-200"],
-  [class*="bg-gray-50"], [class*="bg-gray-100"], [class*="bg-gray-200"],
-  [class*="bg-zinc-50"], [class*="bg-zinc-100"], [class*="bg-zinc-200"],
-  [class*="bg-neutral-50"], [class*="bg-neutral-100"], [class*="bg-neutral-200"],
-  [class*="bg-stone-50"], [class*="bg-stone-100"], [class*="bg-stone-200"],
-  [class*="bg-[#fff"], [class*="bg-[#f8"], [class*="bg-[#f9"], [class*="bg-[#faf"], [class*="bg-[#fb"], [class*="bg-[#fc"], [class*="bg-[#fd"], [class*="bg-[#fe"],
-  [class*="bg-[var(--paper"], [class*="bg-[var(--warm-white"], [class*="bg-[var(--cream"]
+  .bg-white,
+  .bg-slate-50, .bg-slate-100, .bg-slate-200,
+  .bg-gray-50, .bg-gray-100, .bg-gray-200,
+  .bg-zinc-50, .bg-zinc-100, .bg-zinc-200,
+  .bg-neutral-50, .bg-neutral-100, .bg-neutral-200,
+  .bg-stone-50, .bg-stone-100, .bg-stone-200,
+  [class*="bg-[#fff"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#f8"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#f9"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#faf"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#fb"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#fc"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#fd"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#fe"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--paper"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--warm-white"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--cream"]:not([class*="/"]):not([class*="dark:"])
 ) {
   color: #0e1117 !important;
   border-color: rgba(14, 17, 23, 0.14);
@@ -408,15 +417,24 @@ html[data-theme="dark"] {
 
 :where(.btn-light, .btn-ghost, .btn-outline, [data-light-button="true"], [data-button-surface="light"]) :where(span, strong, small, svg, path, i),
 :is(button, a, [role="button"]):where(
-  [class*="bg-white"],
-  [class*="bg-slate-50"], [class*="bg-slate-100"], [class*="bg-slate-200"],
-  [class*="bg-gray-50"], [class*="bg-gray-100"], [class*="bg-gray-200"],
-  [class*="bg-zinc-50"], [class*="bg-zinc-100"], [class*="bg-zinc-200"],
-  [class*="bg-neutral-50"], [class*="bg-neutral-100"], [class*="bg-neutral-200"],
-  [class*="bg-stone-50"], [class*="bg-stone-100"], [class*="bg-stone-200"],
-  [class*="bg-[#fff"], [class*="bg-[#f8"], [class*="bg-[#f9"], [class*="bg-[#faf"], [class*="bg-[#fb"], [class*="bg-[#fc"], [class*="bg-[#fd"], [class*="bg-[#fe"],
-  [class*="bg-[var(--paper"], [class*="bg-[var(--warm-white"], [class*="bg-[var(--cream"], [class*="bg-[var(--bureau-bone"],
-  [class*="bg-[rgba(255"], [class*="bg-[rgba(246"]
+  .bg-white,
+  .bg-slate-50, .bg-slate-100, .bg-slate-200,
+  .bg-gray-50, .bg-gray-100, .bg-gray-200,
+  .bg-zinc-50, .bg-zinc-100, .bg-zinc-200,
+  .bg-neutral-50, .bg-neutral-100, .bg-neutral-200,
+  .bg-stone-50, .bg-stone-100, .bg-stone-200,
+  [class*="bg-[#fff"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#f8"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#f9"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#faf"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#fb"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#fc"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#fd"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#fe"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--paper"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--warm-white"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--cream"]:not([class*="/"]):not([class*="dark:"]),
+  .bg-\[var\(--bureau-bone\)\]
 ) :where(span, strong, small, svg, path, i) {
   color: currentColor !important;
   fill: currentColor !important;
@@ -427,14 +445,26 @@ html[data-theme="dark"] {
 :where(.btn-primary, .btn-dark, .btn-accent, .btn-gold, [data-dark-button="true"], [data-button-surface="dark"]),
 :is(button, a, [role="button"]):where(
   [data-active="true"], [data-state="active"], [aria-selected="true"], [aria-pressed="true"], [aria-current="page"], [data-selected="true"],
-  [class*="bg-black"],
-  [class*="bg-slate-800"], [class*="bg-slate-900"], [class*="bg-slate-950"],
-  [class*="bg-gray-800"], [class*="bg-gray-900"], [class*="bg-gray-950"],
-  [class*="bg-zinc-800"], [class*="bg-zinc-900"], [class*="bg-zinc-950"],
-  [class*="bg-neutral-800"], [class*="bg-neutral-900"], [class*="bg-neutral-950"],
-  [class*="bg-stone-800"], [class*="bg-stone-900"], [class*="bg-stone-950"],
-  [class*="bg-[#0"], [class*="bg-[#1"], [class*="bg-[#2"],
-  [class*="bg-[var(--ink"], [class*="bg-[var(--navy"], [class*="bg-[var(--bureau-ink"], [class*="bg-[var(--bureau-blue"], [class*="bg-[var(--bureau-teal"]
+  .bg-black,
+  .bg-slate-800, .bg-slate-900, .bg-slate-950,
+  .bg-gray-800, .bg-gray-900, .bg-gray-950,
+  .bg-zinc-800, .bg-zinc-900, .bg-zinc-950,
+  .bg-neutral-800, .bg-neutral-900, .bg-neutral-950,
+  .bg-stone-800, .bg-stone-900, .bg-stone-950,
+  .bg-blue-900, .bg-blue-800, .bg-blue-700, .bg-blue-950,
+  .bg-indigo-900, .bg-indigo-800, .bg-indigo-950, .bg-indigo-700,
+  .bg-emerald-900, .bg-emerald-800, .bg-emerald-950,
+  .bg-rose-900, .bg-rose-800, .bg-rose-950,
+  .bg-red-900, .bg-red-800, .bg-red-950,
+  .bg-violet-900, .bg-violet-800, .bg-violet-950,
+  [class*="bg-[#0"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#1"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#2"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--ink"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--navy"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--bureau-ink"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--bureau-blue"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--bureau-teal"]:not([class*="/"]):not([class*="dark:"])
 ) {
   color: var(--kpss-button-text-on-dark) !important;
   border-color: var(--kpss-button-border-dark);
@@ -443,22 +473,54 @@ html[data-theme="dark"] {
 :where(.btn-primary, .btn-dark, .btn-accent, .btn-gold, [data-dark-button="true"], [data-button-surface="dark"]) :where(span, strong, small, svg, path, i),
 :is(button, a, [role="button"]):where(
   [data-active="true"], [data-state="active"], [aria-selected="true"], [aria-pressed="true"], [aria-current="page"], [data-selected="true"],
-  [class*="bg-black"],
-  [class*="bg-slate-800"], [class*="bg-slate-900"], [class*="bg-slate-950"],
-  [class*="bg-gray-800"], [class*="bg-gray-900"], [class*="bg-gray-950"],
-  [class*="bg-zinc-800"], [class*="bg-zinc-900"], [class*="bg-zinc-950"],
-  [class*="bg-neutral-800"], [class*="bg-neutral-900"], [class*="bg-neutral-950"],
-  [class*="bg-stone-800"], [class*="bg-stone-900"], [class*="bg-stone-950"],
-  [class*="bg-[#0"], [class*="bg-[#1"], [class*="bg-[#2"],
-  [class*="bg-[var(--ink"], [class*="bg-[var(--navy"], [class*="bg-[var(--bureau-ink"], [class*="bg-[var(--bureau-blue"], [class*="bg-[var(--bureau-teal"]
+  .bg-black,
+  .bg-slate-800, .bg-slate-900, .bg-slate-950,
+  .bg-gray-800, .bg-gray-900, .bg-gray-950,
+  .bg-zinc-800, .bg-zinc-900, .bg-zinc-950,
+  .bg-neutral-800, .bg-neutral-900, .bg-neutral-950,
+  .bg-stone-800, .bg-stone-900, .bg-stone-950,
+  .bg-blue-900, .bg-blue-800, .bg-blue-700, .bg-blue-950,
+  .bg-indigo-900, .bg-indigo-800, .bg-indigo-950, .bg-indigo-700,
+  .bg-emerald-900, .bg-emerald-800, .bg-emerald-950,
+  .bg-rose-900, .bg-rose-800, .bg-rose-950,
+  .bg-red-900, .bg-red-800, .bg-red-950,
+  .bg-violet-900, .bg-violet-800, .bg-violet-950,
+  [class*="bg-[#0"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#1"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[#2"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--ink"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--navy"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--bureau-ink"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--bureau-blue"]:not([class*="/"]):not([class*="dark:"]),
+  [class*="bg-[var(--bureau-teal"]:not([class*="/"]):not([class*="dark:"])
 ) :where(span, strong, small, svg, path, i) {
   color: currentColor !important;
   fill: currentColor !important;
   stroke: currentColor !important;
 }
 
+/* Specific theme classes support for dark mode variants to keep text readable */
+html[data-theme="dark"] :is(button, a, [role="button"]):where(
+  .dark\:bg-slate-800, .dark\:bg-slate-900, .dark\:bg-slate-950,
+  .dark\:bg-gray-800, .dark\:bg-gray-900, .dark\:bg-gray-950,
+  .dark\:bg-zinc-800, .dark\:bg-zinc-900, .dark\:bg-zinc-950,
+  .dark\:bg-neutral-800, .dark\:bg-neutral-900, .dark\:bg-neutral-950,
+  .dark\:bg-stone-800, .dark\:bg-stone-900, .dark\:bg-stone-950,
+  .dark\:bg-blue-900, .dark\:bg-blue-800, .dark\:bg-blue-950,
+  .dark\:bg-indigo-900, .dark\:bg-indigo-800, .dark\:bg-indigo-950
+) {
+  color: var(--kpss-button-text-on-dark) !important;
+}
+
+html[data-theme="dark"] :is(button, a, [role="button"]):where(
+  .dark\:bg-white,
+  .dark\:bg-slate-50, .dark\:bg-slate-100, .dark\:bg-slate-200
+) {
+  color: #0e1117 !important;
+}
+
 /* Professional polish: avoid washed-out white pills like the screenshot. */
-:where(.card-surface, .bureau-card, .lab-card, .atlas-card, .archive-card, .surface-glass, .bg-card) :is(button, a, [role="button"]):not(.btn-primary):not(.btn-dark):not(.btn-accent):not(.btn-gold):not([data-dark-button="true"]):not([data-active="true"]):not([aria-current="page"]) {
+:where(.card-surface, .bureau-card, .lab-card, .atlas-card, .archive-card, .surface-glass, .bg-card) :is(button, a, [role="button"]):not(.btn-primary):not(.btn-dark):not(.btn-accent):not(.btn-gold):not([data-dark-button="true"]):not([data-active="true"]):not([aria-current="page"]):not([class*="/"]):not([class*="bg-white/"]) {
   color: var(--kpss-button-text-on-light) !important;
 }
 
@@ -467,34 +529,34 @@ html[data-theme="dark"] {
   font-weight: 820;
 }
 
-/* Sidebar links and icons bypass global button contrast overrides */
-aside :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) {
+/* Sidebar links and icons bypass global button contrast overrides - Scoped strictly to layout navigation */
+aside nav :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) {
   color: var(--sb-text-soft) !important;
 }
-aside :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) :where(span, strong, small, svg, path, i),
-aside :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) svg {
+aside nav :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) :where(span, strong, small, svg, path, i),
+aside nav :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) svg {
   color: var(--sb-text-soft) !important;
   fill: none !important;
   stroke: var(--sb-text-soft) !important;
 }
 
-aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) {
+aside nav :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) {
   color: var(--sb-primary) !important;
   background-color: rgba(30, 58, 138, 0.09) !important;
 }
-aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) :where(span, strong, small, svg, path, i),
-aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) svg {
+aside nav :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) :where(span, strong, small, svg, path, i),
+aside nav :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) svg {
   color: var(--sb-primary) !important;
   fill: none !important;
   stroke: var(--sb-primary) !important;
 }
 
-html[data-theme="dark"] aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) {
+html[data-theme="dark"] aside nav :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) {
   color: var(--sb-primary-2) !important;
   background-color: rgba(37, 99, 235, 0.15) !important;
 }
-html[data-theme="dark"] aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) :where(span, strong, small, svg, path, i),
-html[data-theme="dark"] aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) svg {
+html[data-theme="dark"] aside nav :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) :where(span, strong, small, svg, path, i),
+html[data-theme="dark"] aside nav :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) svg {
   color: var(--sb-primary-2) !important;
   fill: none !important;
   stroke: var(--sb-primary-2) !important;
@@ -509,8 +571,8 @@ html[data-theme="dark"] aside :is(a, button, [role="button"]):is([data-active="t
 }
 
 /* Ensure custom colored passive sidebar icons maintain their colors */
-aside :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) svg.kpss-custom-icon,
-aside :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) svg.kpss-custom-icon * {
+aside nav :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) svg.kpss-custom-icon,
+aside nav :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) svg.kpss-custom-icon * {
   color: inherit !important;
   stroke: currentColor !important;
 }
