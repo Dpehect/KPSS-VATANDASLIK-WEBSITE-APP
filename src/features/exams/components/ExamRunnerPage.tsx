@@ -1,15 +1,7 @@
 import { ArrowLeft, Clock, FileQuestion, Target } from "lucide-react";
 import { fetchContentExamQuestions } from "@/lib/content/supabase-content-server";
 import { TopicQuestionRunner } from "@/features/question-bank/components/TopicQuestionRunner";
-import { questions as localQuestions } from "@/data/kpss";
-
-const exams = [
-  { id: "deneme-1", title: "KPSS Vatandaşlık Deneme Sınavı - 1", minutes: 15, questionCount: 15 },
-  { id: "deneme-2", title: "KPSS Vatandaşlık Deneme Sınavı - 2", minutes: 15, questionCount: 15 },
-  { id: "deneme-3", title: "KPSS Vatandaşlık Deneme Sınavı - 3", minutes: 20, questionCount: 15 },
-  { id: "deneme-4", title: "Vatandaşlık Genel Tarama Denemesi", minutes: 25, questionCount: 20 },
-  { id: "deneme-5", title: "KPSS Vatandaşlık Şampiyonlar Provası", minutes: 30, questionCount: 30 },
-];
+import { questions as localQuestions, exams as localExams } from "@/data/kpss";
 
 function getExamIndex(examId: string) {
   const matched = examId.match(/(\d+)/);
@@ -17,7 +9,21 @@ function getExamIndex(examId: string) {
 }
 
 export async function ExamRunnerPage({ examId }: { examId: string }) {
-  const preset = exams.find((exam) => exam.id === examId) ?? exams[0];
+  const matchedPreset = localExams.find((exam) => exam.id === examId);
+  const preset = matchedPreset
+    ? {
+        id: matchedPreset.id,
+        title: matchedPreset.title,
+        minutes: matchedPreset.durationMinutes,
+        questionCount: matchedPreset.questionIds.length,
+      }
+    : {
+        id: examId,
+        title: `KPSS Vatandaşlık Deneme Sınavı - ${getExamIndex(examId)}`,
+        minutes: 20,
+        questionCount: 15,
+      };
+
   let questions = await fetchContentExamQuestions(getExamIndex(examId), preset.questionCount);
 
   if (!questions || questions.length === 0) {

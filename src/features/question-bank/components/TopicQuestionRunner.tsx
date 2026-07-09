@@ -70,8 +70,6 @@ export function TopicQuestionRunner({ questions, topicTitle }: { questions: Ques
       correctChoiceId: current.correctChoiceId,
       isCorrect
     });
-
-    toast[isCorrect ? "success" : "error"](isCorrect ? "Doğru cevap kaydedildi" : "Yanlış cevap kaydedildi");
   }
 
   function goTo(index: number) {

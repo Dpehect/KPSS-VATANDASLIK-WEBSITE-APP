@@ -14,13 +14,24 @@ const totalQuestionsCount = localQuestionsList.length;
 export const exams: Exam[] = [];
 
 if (totalQuestionsCount > 0) {
-  const examConfigs = [
-    { id: "deneme-1", title: "KPSS Vatandaşlık Deneme Sınavı - 1", difficulty: "kolay", durationMinutes: 15, count: 15 },
-    { id: "deneme-2", title: "KPSS Vatandaşlık Deneme Sınavı - 2", difficulty: "orta", durationMinutes: 15, count: 15 },
-    { id: "deneme-3", title: "KPSS Vatandaşlık Deneme Sınavı - 3", difficulty: "zor", durationMinutes: 20, count: 15 },
-    { id: "deneme-4", title: "Vatandaşlık Genel Tarama Denemesi", difficulty: "karma", durationMinutes: 25, count: 20 },
-    { id: "deneme-5", title: "KPSS Vatandaşlık Şampiyonlar Provası", difficulty: "zor", durationMinutes: 30, count: 30 },
-  ];
+  const examConfigs = [];
+  for (let i = 1; i <= 100; i++) {
+    const difficulty = ["kolay", "orta", "zor", "karma"][i % 4];
+    const count = [15, 15, 20, 20, 30][i % 5];
+    const durationMinutes = [15, 15, 20, 20, 30][i % 5];
+    
+    let title = `KPSS Vatandaşlık Deneme Sınavı - ${i}`;
+    if (i === 100) title = "KPSS Vatandaşlık 100. Yıl Özel Denemesi";
+    else if (i % 10 === 0) title = `KPSS Vatandaşlık Altın Deneme - ${i / 10}`;
+
+    examConfigs.push({
+      id: `deneme-${i}`,
+      title,
+      difficulty,
+      durationMinutes,
+      count
+    });
+  }
 
   examConfigs.forEach((config) => {
     let matchedQuestions = localQuestionsList;

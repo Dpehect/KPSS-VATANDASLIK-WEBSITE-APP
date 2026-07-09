@@ -48,9 +48,6 @@ export function QuestionBankClient({ questions, topics }: { questions: Question[
 
     if (isCorrect) {
       setScore((value) => value + 1);
-      toast.success("Doğru cevap kaydedildi");
-    } else {
-      toast.error("Yanlış cevap kaydedildi, açıklamayı incele");
     }
   }
 
