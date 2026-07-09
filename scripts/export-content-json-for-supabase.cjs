@@ -17,16 +17,19 @@ const originalResolveFilename = Module._resolveFilename;
 Module._resolveFilename = function patchedResolve(request, parent, isMain, options) {
   if (request.startsWith("@/")) {
     const mapped = path.join(root, "src", request.slice(2));
-    const candidates = [
-      mapped,
+    const candidates = [];
+    if (fs.existsSync(mapped) && fs.statSync(mapped).isFile()) {
+      candidates.push(mapped);
+    }
+    candidates.push(
       `${mapped}.ts`,
       `${mapped}.tsx`,
       path.join(mapped, "index.ts"),
       path.join(mapped, "index.tsx")
-    ];
+    );
 
     for (const candidate of candidates) {
-      if (fs.existsSync(candidate)) return candidate;
+      if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) return candidate;
     }
   }
 
@@ -101,6 +104,8 @@ const testRows = allQuestionTests.map((test) => ({
 
 const questionRows = [];
 const choiceRows = [];
+const seenQuestions = new Set();
+const seenChoices = new Set();
 
 for (const test of allQuestionTests) {
   if (test.topicId === "all") continue;
@@ -109,28 +114,35 @@ for (const test of allQuestionTests) {
     const question = questionMap.get(questionId);
     if (!question) return;
 
-    questionRows.push({
-      id: question.id,
-      topic_id: question.topicId,
-      test_id: test.id,
-      type: question.type,
-      difficulty: question.difficulty,
-      stem: question.stem,
-      correct_choice_id: question.correctChoiceId,
-      explanation: question.explanation,
-      exam_tip: question.examTip,
-      tags: question.tags,
-      sort_order: index,
-      is_published: true
-    });
+    if (!seenQuestions.has(question.id)) {
+      seenQuestions.add(question.id);
+      questionRows.push({
+        id: question.id,
+        topic_id: question.topicId,
+        test_id: test.id,
+        type: question.type,
+        difficulty: question.difficulty,
+        stem: question.stem,
+        correct_choice_id: question.correctChoiceId,
+        explanation: question.explanation,
+        exam_tip: question.examTip,
+        tags: question.tags,
+        sort_order: index,
+        is_published: true
+      });
+    }
 
     question.choices.forEach((choice, choiceIndex) => {
-      choiceRows.push({
-        question_id: question.id,
-        choice_id: choice.id,
-        text: choice.text,
-        sort_order: choiceIndex
-      });
+      const choiceKey = `${question.id}-${choice.id}`;
+      if (!seenChoices.has(choiceKey)) {
+        seenChoices.add(choiceKey);
+        choiceRows.push({
+          question_id: question.id,
+          choice_id: choice.id,
+          text: choice.text,
+          sort_order: choiceIndex
+        });
+      }
     });
   });
 }

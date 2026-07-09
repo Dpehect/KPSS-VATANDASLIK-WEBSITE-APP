@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Clock, FileQuestion, Gauge, Medal, Target, Trophy } from "lucide-react";
-import { fetchExamsFromSupabase } from "@/lib/content/content-service";
+import { getSupabaseExams } from "@/lib/kpss/supabase-content";
 import { exams as localExams } from "@/data/kpss-history";
 
 const DIFFICULTY_LABELS: Record<string, string> = {
@@ -18,15 +18,15 @@ const DIFFICULTY_COLORS: Record<string, string> = {
 };
 
 export async function ExamsPage() {
-  let exams: Awaited<ReturnType<typeof fetchExamsFromSupabase>> = [];
+  let exams: any[] = [];
 
   try {
-    exams = await fetchExamsFromSupabase();
-  } catch {
-    // Supabase bağlantısı yoksa boş göster
+    exams = await getSupabaseExams();
+  } catch (err: any) {
+    console.warn("getSupabaseExams failed, falling back:", err.message);
   }
 
-  // Eğer Supabase'den veri gelmediyse veya boş geldiyse yerel 50 denemeyi listele!
+  // Eğer Supabase'den veri gelmediyse veya boş geldiyse yerel denemeleri listele!
   if (!exams || exams.length === 0) {
     exams = localExams as any;
   }

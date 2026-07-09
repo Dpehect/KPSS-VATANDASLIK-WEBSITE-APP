@@ -190,7 +190,7 @@ export function ExamRunnerClient({
             <button
               type="button"
               onClick={() => setShowHint((value) => !value)}
-              className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-[rgba(4,126,137,.34)] bg-[rgba(4,126,137,.16)] px-4 py-2 text-sm font-black text-[var(--bureau-inverse)]"
+              className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-4 py-2 text-sm font-black text-teal-900 transition hover:bg-teal-100 dark:border-teal-800/40 dark:bg-teal-950/30 dark:text-teal-300 dark:hover:bg-teal-950/50"
             >
               <Lightbulb size={17} />
               {showHint ? "İpucunu gizle" : "İpucu göster"}
@@ -200,9 +200,9 @@ export function ExamRunnerClient({
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-4 rounded-[1.35rem] border border-[rgba(4,126,137,.30)] bg-[rgba(4,126,137,.12)] p-4"
+                className="mt-4 rounded-[1.35rem] border border-teal-100 bg-teal-50/50 p-4 dark:border-teal-900/30 dark:bg-teal-950/20"
               >
-                <p className="text-sm font-semibold leading-7 text-[var(--bureau-inverse-copy)]">{subtleHint}</p>
+                <p className="text-sm font-semibold leading-7 text-teal-800 dark:text-teal-300">{subtleHint}</p>
               </motion.div>
             ) : null}
           </motion.article>

@@ -71,7 +71,52 @@ import { loadEncyclopedia } from "./encyclopedia/loader";
 
 import type { Exam, StudyRecommendation, Topic, Flashcard, TopicSummaryBlock } from "@/types/study";
 
+// Generate mock exams dynamically using local questions
+const localQuestionsList = modularQuestions || [];
+const totalQuestionsCount = localQuestionsList.length;
+
 export const exams: Exam[] = [];
+
+if (totalQuestionsCount > 0) {
+  const examConfigs = [
+    { id: "deneme-1", title: "KPSS Vatandaşlık Deneme Sınavı - 1", difficulty: "kolay", durationMinutes: 15, count: 15 },
+    { id: "deneme-2", title: "KPSS Vatandaşlık Deneme Sınavı - 2", difficulty: "orta", durationMinutes: 15, count: 15 },
+    { id: "deneme-3", title: "KPSS Vatandaşlık Deneme Sınavı - 3", difficulty: "zor", durationMinutes: 20, count: 15 },
+    { id: "deneme-4", title: "Vatandaşlık Genel Tarama Denemesi", difficulty: "karma", durationMinutes: 25, count: 20 },
+    { id: "deneme-5", title: "KPSS Vatandaşlık Şampiyonlar Provası", difficulty: "zor", durationMinutes: 30, count: 30 },
+  ];
+
+  examConfigs.forEach((config) => {
+    let matchedQuestions = localQuestionsList;
+    if (config.difficulty !== "karma") {
+      matchedQuestions = localQuestionsList.filter((q) => q.difficulty === config.difficulty);
+      if (matchedQuestions.length < config.count) {
+        matchedQuestions = localQuestionsList;
+      }
+    }
+    
+    // Deterministic shuffle using exam ID as seed
+    const shuffled = [...matchedQuestions];
+    let seed = config.id.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = (seed + i) % (i + 1);
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      seed = (seed * 9301 + 49297) % 233280;
+    }
+
+    const selectedIds = shuffled.slice(0, config.count).map((q) => q.id);
+
+    exams.push({
+      id: config.id,
+      title: config.title,
+      description: \`KPSS Vatandaşlık müfredatına göre hazırlanan \\\${config.count} soruluk \\\${config.difficulty} seviye deneme provası.\`,
+      durationMinutes: config.durationMinutes,
+      questionIds: selectedIds,
+      difficulty: config.difficulty,
+    } as any);
+  });
+}
+
 export const recommendations: StudyRecommendation[] = [
   {
     id: "daily-kpss-citizenship-book-flow",
