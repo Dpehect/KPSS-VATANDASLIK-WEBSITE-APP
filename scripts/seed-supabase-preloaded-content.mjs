@@ -75,12 +75,12 @@ function transpileAndEvaluateTs(filePath) {
       if (request.startsWith("@/data/")) {
         const rel = request.replace("@/", "src/");
         const target = path.join(root, `${rel}.ts`);
-        if (fs.existsSync(target)) return transpileAndEvaluateTs(target);
+        if (fs.existsSync(target) && fs.statSync(target).isFile()) return transpileAndEvaluateTs(target);
       }
       if (request.startsWith("./") || request.startsWith("../")) {
         const target = path.resolve(path.dirname(filePath), request);
         for (const candidate of [target, `${target}.ts`, `${target}.tsx`, path.join(target, "index.ts")]) {
-          if (fs.existsSync(candidate)) return transpileAndEvaluateTs(candidate);
+          if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) return transpileAndEvaluateTs(candidate);
         }
       }
       return {};
