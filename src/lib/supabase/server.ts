@@ -14,6 +14,9 @@ export async function createClient() {
   const cookieStore = await cookies();
 
   return createServerClient(getSupabaseUrl(), getSupabasePublishableKey(), {
+    db: {
+      schema: "vatandaslik"
+    },
     cookies: {
       getAll() {
         return cookieStore.getAll();

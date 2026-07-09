@@ -83,6 +83,9 @@ function getClient() {
   if (!url || !key) return null;
 
   return createClient(url, key, {
+    db: {
+      schema: "vatandaslik"
+    },
     auth: {
       persistSession: false,
       autoRefreshToken: false,

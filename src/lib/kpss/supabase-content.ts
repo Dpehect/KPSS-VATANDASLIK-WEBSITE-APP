@@ -63,7 +63,7 @@ const LEVEL_LABELS: Record<TestLevel, string> = {
   zor: "Zor",
 };
 
-let client: SupabaseClient | null = null;
+let client: any = null;
 
 function createSupabaseContentClient() {
   if (client) return client;
@@ -74,6 +74,9 @@ function createSupabaseContentClient() {
   if (!url || !key) return null;
 
   client = createClient(url, key, {
+    db: {
+      schema: "vatandaslik"
+    },
     auth: {
       persistSession: false,
       autoRefreshToken: false,
@@ -103,7 +106,7 @@ async function readRows<T>(kind: KpssContentKind): Promise<T[]> {
     return [];
   }
 
-  return (data ?? []).map((row) => (row as { payload: T }).payload).filter(Boolean);
+  return (data ?? []).map((row: any) => (row as { payload: T }).payload).filter(Boolean);
 }
 
 async function readRow<T>(kind: KpssContentKind, key: string): Promise<T | null> {

@@ -12,5 +12,9 @@ export function createClient() {
     return null;
   }
 
-  return createBrowserClient(getSupabaseUrl(), getSupabasePublishableKey());
+  return createBrowserClient(getSupabaseUrl(), getSupabasePublishableKey(), {
+    db: {
+      schema: "vatandaslik"
+    }
+  });
 }

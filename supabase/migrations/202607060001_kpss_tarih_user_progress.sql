@@ -1,9 +1,11 @@
+CREATE SCHEMA IF NOT EXISTS vatandaslik;
+
 -- KPSS Tarih Web App — user progress schema
 -- İçerikler JSON'da kalır; kullanıcıya özel ilerleme Supabase'de tutulur.
 
 create extension if not exists pgcrypto;
 
-create table if not exists public.profiles (
+create table if not exists vatandaslik.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   email text,
   full_name text,
@@ -12,7 +14,7 @@ create table if not exists public.profiles (
   updated_at timestamptz not null default now()
 );
 
-create table if not exists public.user_topic_progress (
+create table if not exists vatandaslik.user_topic_progress (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
   topic_id text not null,
@@ -22,7 +24,7 @@ create table if not exists public.user_topic_progress (
   unique(user_id, topic_id)
 );
 
-create table if not exists public.question_attempts (
+create table if not exists vatandaslik.question_attempts (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
   question_id text not null,
@@ -33,7 +35,7 @@ create table if not exists public.question_attempts (
   answered_at timestamptz not null default now()
 );
 
-create table if not exists public.flashcard_reviews (
+create table if not exists vatandaslik.flashcard_reviews (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
   card_id text not null,
@@ -42,7 +44,7 @@ create table if not exists public.flashcard_reviews (
   reviewed_at timestamptz not null default now()
 );
 
-create table if not exists public.exam_results (
+create table if not exists vatandaslik.exam_results (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
   exam_id text not null,
@@ -51,7 +53,7 @@ create table if not exists public.exam_results (
   completed_at timestamptz not null default now()
 );
 
-create table if not exists public.user_notes (
+create table if not exists vatandaslik.user_notes (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
   topic_id text,
@@ -62,32 +64,32 @@ create table if not exists public.user_notes (
 );
 
 create index if not exists idx_user_topic_progress_user_id
-  on public.user_topic_progress(user_id);
+  on vatandaslik.user_topic_progress(user_id);
 
 create index if not exists idx_question_attempts_user_id_answered_at
-  on public.question_attempts(user_id, answered_at desc);
+  on vatandaslik.question_attempts(user_id, answered_at desc);
 
 create index if not exists idx_question_attempts_user_id_topic_id
-  on public.question_attempts(user_id, topic_id);
+  on vatandaslik.question_attempts(user_id, topic_id);
 
 create index if not exists idx_flashcard_reviews_user_id_reviewed_at
-  on public.flashcard_reviews(user_id, reviewed_at desc);
+  on vatandaslik.flashcard_reviews(user_id, reviewed_at desc);
 
 create index if not exists idx_exam_results_user_id_completed_at
-  on public.exam_results(user_id, completed_at desc);
+  on vatandaslik.exam_results(user_id, completed_at desc);
 
 create index if not exists idx_user_notes_user_id_created_at
-  on public.user_notes(user_id, created_at desc);
+  on vatandaslik.user_notes(user_id, created_at desc);
 
 -- Yeni Google kullanıcısı oluşunca profile satırı otomatik oluşturulur.
-create or replace function public.handle_new_user_profile()
+create or replace function vatandaslik.handle_new_user_profile()
 returns trigger
 language plpgsql
 security definer
-set search_path = public
+set search_path = vatandaslik, public
 as $$
 begin
-  insert into public.profiles (id, email, full_name, avatar_url)
+  insert into vatandaslik.profiles (id, email, full_name, avatar_url)
   values (
     new.id,
     new.email,
@@ -109,116 +111,116 @@ drop trigger if exists on_auth_user_created_profile on auth.users;
 
 create trigger on_auth_user_created_profile
 after insert on auth.users
-for each row execute function public.handle_new_user_profile();
+for each row execute function vatandaslik.handle_new_user_profile();
 
 -- RLS
-alter table public.profiles enable row level security;
-alter table public.user_topic_progress enable row level security;
-alter table public.question_attempts enable row level security;
-alter table public.flashcard_reviews enable row level security;
-alter table public.exam_results enable row level security;
-alter table public.user_notes enable row level security;
+alter table vatandaslik.profiles enable row level security;
+alter table vatandaslik.user_topic_progress enable row level security;
+alter table vatandaslik.question_attempts enable row level security;
+alter table vatandaslik.flashcard_reviews enable row level security;
+alter table vatandaslik.exam_results enable row level security;
+alter table vatandaslik.user_notes enable row level security;
 
-drop policy if exists "profiles_select_own" on public.profiles;
-drop policy if exists "profiles_update_own" on public.profiles;
+drop policy if exists "profiles_select_own" on vatandaslik.profiles;
+drop policy if exists "profiles_update_own" on vatandaslik.profiles;
 
 create policy "profiles_select_own"
-on public.profiles for select
+on vatandaslik.profiles for select
 using ((select auth.uid()) = id);
 
 create policy "profiles_update_own"
-on public.profiles for update
+on vatandaslik.profiles for update
 using ((select auth.uid()) = id)
 with check ((select auth.uid()) = id);
 
-drop policy if exists "topic_progress_select_own" on public.user_topic_progress;
-drop policy if exists "topic_progress_insert_own" on public.user_topic_progress;
-drop policy if exists "topic_progress_update_own" on public.user_topic_progress;
-drop policy if exists "topic_progress_delete_own" on public.user_topic_progress;
+drop policy if exists "topic_progress_select_own" on vatandaslik.user_topic_progress;
+drop policy if exists "topic_progress_insert_own" on vatandaslik.user_topic_progress;
+drop policy if exists "topic_progress_update_own" on vatandaslik.user_topic_progress;
+drop policy if exists "topic_progress_delete_own" on vatandaslik.user_topic_progress;
 
 create policy "topic_progress_select_own"
-on public.user_topic_progress for select
+on vatandaslik.user_topic_progress for select
 using ((select auth.uid()) = user_id);
 
 create policy "topic_progress_insert_own"
-on public.user_topic_progress for insert
+on vatandaslik.user_topic_progress for insert
 with check ((select auth.uid()) = user_id);
 
 create policy "topic_progress_update_own"
-on public.user_topic_progress for update
+on vatandaslik.user_topic_progress for update
 using ((select auth.uid()) = user_id)
 with check ((select auth.uid()) = user_id);
 
 create policy "topic_progress_delete_own"
-on public.user_topic_progress for delete
+on vatandaslik.user_topic_progress for delete
 using ((select auth.uid()) = user_id);
 
-drop policy if exists "question_attempts_select_own" on public.question_attempts;
-drop policy if exists "question_attempts_insert_own" on public.question_attempts;
-drop policy if exists "question_attempts_delete_own" on public.question_attempts;
+drop policy if exists "question_attempts_select_own" on vatandaslik.question_attempts;
+drop policy if exists "question_attempts_insert_own" on vatandaslik.question_attempts;
+drop policy if exists "question_attempts_delete_own" on vatandaslik.question_attempts;
 
 create policy "question_attempts_select_own"
-on public.question_attempts for select
+on vatandaslik.question_attempts for select
 using ((select auth.uid()) = user_id);
 
 create policy "question_attempts_insert_own"
-on public.question_attempts for insert
+on vatandaslik.question_attempts for insert
 with check ((select auth.uid()) = user_id);
 
 create policy "question_attempts_delete_own"
-on public.question_attempts for delete
+on vatandaslik.question_attempts for delete
 using ((select auth.uid()) = user_id);
 
-drop policy if exists "flashcard_reviews_select_own" on public.flashcard_reviews;
-drop policy if exists "flashcard_reviews_insert_own" on public.flashcard_reviews;
-drop policy if exists "flashcard_reviews_delete_own" on public.flashcard_reviews;
+drop policy if exists "flashcard_reviews_select_own" on vatandaslik.flashcard_reviews;
+drop policy if exists "flashcard_reviews_insert_own" on vatandaslik.flashcard_reviews;
+drop policy if exists "flashcard_reviews_delete_own" on vatandaslik.flashcard_reviews;
 
 create policy "flashcard_reviews_select_own"
-on public.flashcard_reviews for select
+on vatandaslik.flashcard_reviews for select
 using ((select auth.uid()) = user_id);
 
 create policy "flashcard_reviews_insert_own"
-on public.flashcard_reviews for insert
+on vatandaslik.flashcard_reviews for insert
 with check ((select auth.uid()) = user_id);
 
 create policy "flashcard_reviews_delete_own"
-on public.flashcard_reviews for delete
+on vatandaslik.flashcard_reviews for delete
 using ((select auth.uid()) = user_id);
 
-drop policy if exists "exam_results_select_own" on public.exam_results;
-drop policy if exists "exam_results_insert_own" on public.exam_results;
-drop policy if exists "exam_results_delete_own" on public.exam_results;
+drop policy if exists "exam_results_select_own" on vatandaslik.exam_results;
+drop policy if exists "exam_results_insert_own" on vatandaslik.exam_results;
+drop policy if exists "exam_results_delete_own" on vatandaslik.exam_results;
 
 create policy "exam_results_select_own"
-on public.exam_results for select
+on vatandaslik.exam_results for select
 using ((select auth.uid()) = user_id);
 
 create policy "exam_results_insert_own"
-on public.exam_results for insert
+on vatandaslik.exam_results for insert
 with check ((select auth.uid()) = user_id);
 
 create policy "exam_results_delete_own"
-on public.exam_results for delete
+on vatandaslik.exam_results for delete
 using ((select auth.uid()) = user_id);
 
-drop policy if exists "user_notes_select_own" on public.user_notes;
-drop policy if exists "user_notes_insert_own" on public.user_notes;
-drop policy if exists "user_notes_update_own" on public.user_notes;
-drop policy if exists "user_notes_delete_own" on public.user_notes;
+drop policy if exists "user_notes_select_own" on vatandaslik.user_notes;
+drop policy if exists "user_notes_insert_own" on vatandaslik.user_notes;
+drop policy if exists "user_notes_update_own" on vatandaslik.user_notes;
+drop policy if exists "user_notes_delete_own" on vatandaslik.user_notes;
 
 create policy "user_notes_select_own"
-on public.user_notes for select
+on vatandaslik.user_notes for select
 using ((select auth.uid()) = user_id);
 
 create policy "user_notes_insert_own"
-on public.user_notes for insert
+on vatandaslik.user_notes for insert
 with check ((select auth.uid()) = user_id);
 
 create policy "user_notes_update_own"
-on public.user_notes for update
+on vatandaslik.user_notes for update
 using ((select auth.uid()) = user_id)
 with check ((select auth.uid()) = user_id);
 
 create policy "user_notes_delete_own"
-on public.user_notes for delete
+on vatandaslik.user_notes for delete
 using ((select auth.uid()) = user_id);

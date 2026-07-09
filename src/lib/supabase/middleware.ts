@@ -28,6 +28,9 @@ export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(getSupabaseUrl(), getSupabasePublishableKey(), {
+    db: {
+      schema: "vatandaslik"
+    },
     cookies: {
       getAll() {
         return request.cookies.getAll();

@@ -1,4 +1,6 @@
-create table if not exists public.kpss_content_bundles (
+CREATE SCHEMA IF NOT EXISTS vatandaslik;
+
+create table if not exists vatandaslik.kpss_content_bundles (
   id text primary key,
   kind text not null,
   key text not null,
@@ -10,28 +12,28 @@ create table if not exists public.kpss_content_bundles (
   unique (kind, key)
 );
 
-create index if not exists kpss_content_bundles_kind_idx on public.kpss_content_bundles(kind);
-create index if not exists kpss_content_bundles_kind_key_idx on public.kpss_content_bundles(kind, key);
-create index if not exists kpss_content_bundles_payload_gin_idx on public.kpss_content_bundles using gin(payload jsonb_path_ops);
+create index if not exists kpss_content_bundles_kind_idx on vatandaslik.kpss_content_bundles(kind);
+create index if not exists kpss_content_bundles_kind_key_idx on vatandaslik.kpss_content_bundles(kind, key);
+create index if not exists kpss_content_bundles_payload_gin_idx on vatandaslik.kpss_content_bundles using gin(payload jsonb_path_ops);
 
-alter table public.kpss_content_bundles enable row level security;
+alter table vatandaslik.kpss_content_bundles enable row level security;
 
-drop policy if exists "kpss content public read" on public.kpss_content_bundles;
+drop policy if exists "kpss content public read" on vatandaslik.kpss_content_bundles;
 create policy "kpss content public read"
-  on public.kpss_content_bundles
+  on vatandaslik.kpss_content_bundles
   for select
   to anon, authenticated
   using (true);
 
-drop policy if exists "kpss content service role write" on public.kpss_content_bundles;
+drop policy if exists "kpss content service role write" on vatandaslik.kpss_content_bundles;
 create policy "kpss content service role write"
-  on public.kpss_content_bundles
+  on vatandaslik.kpss_content_bundles
   for all
   to service_role
   using (true)
   with check (true);
 
-create or replace function public.set_kpss_content_updated_at()
+create or replace function vatandaslik.set_kpss_content_updated_at()
 returns trigger
 language plpgsql
 as $$
@@ -41,7 +43,7 @@ begin
 end;
 $$;
 
-drop trigger if exists trg_kpss_content_updated_at on public.kpss_content_bundles;
+drop trigger if exists trg_kpss_content_updated_at on vatandaslik.kpss_content_bundles;
 create trigger trg_kpss_content_updated_at
-  before update on public.kpss_content_bundles
-  for each row execute function public.set_kpss_content_updated_at();
+  before update on vatandaslik.kpss_content_bundles
+  for each row execute function vatandaslik.set_kpss_content_updated_at();
