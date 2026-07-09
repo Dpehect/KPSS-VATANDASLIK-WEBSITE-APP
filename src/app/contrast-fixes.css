@@ -9,7 +9,7 @@
 .btn-accent *,
 .btn-dark,
 .btn-dark * {
-  color: #fffaf2 !important;
+  color: #ffffff !important;
 }
 
 :is(a, button, [role="button"]):where(
@@ -30,7 +30,7 @@
   [class*="bg-gray-900"],
   [class*="bg-black"]
 ) * {
-  color: #fffaf2 !important;
+  color: #ffffff !important;
 }
 
 .softbridge-nav-link {
@@ -38,7 +38,7 @@
 }
 
 .softbridge-nav-link:hover {
-  color: #fffaf2 !important;
+  color: #ffffff !important;
   background: #101828 !important;
 }
 
@@ -57,5 +57,5 @@
 
 .softbridge-google-button,
 .softbridge-google-button * {
-  color: #fffaf2 !important;
+  color: #ffffff !important;
 }

@@ -83,7 +83,7 @@ export function DashboardPage() {
             <div className="max-w-3xl">
               <p className="kicker !text-amber-300">Bugünkü hedef</p>
               <h1 className="mt-3 max-w-4xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Hoş geldin. KPSS Vatandaşlık’i daha net, daha ölçülebilir çalışalım.
+                Hoş geldin. KPSS Vatandaşlık’ı daha net, daha ölçülebilir çalışalım.
               </h1>
               <p className="mt-5 max-w-2xl text-base font-medium leading-7 text-white/76 sm:text-lg">
                 Önce kısa konu özeti, ardından açıklamalı test, sonra zayıf alan analizi. Her oturum seni bir sonraki doğru adıma taşır.

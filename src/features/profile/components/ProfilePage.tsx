@@ -42,7 +42,7 @@ export function ProfilePage() {
       <PageHeader
         eyebrow="Profil"
         title="Çalışma profilin."
-        description="Bu ekranda local/online senkronize çalışma istatistiklerinin genel özetini görebilirsin."
+        description="Bu ekranda KPSS Vatandaşlık çalışma istatistiklerinin genel özetini görebilirsin."
       />
 
       <section className="grid gap-6 xl:grid-cols-[0.8fr_1.2fr]">
@@ -56,10 +56,6 @@ export function ProfilePage() {
               <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[var(--ink)]">Çalışma hesabı</h2>
             </div>
           </div>
-
-          <p className="kpss-light-container mt-6 rounded-xl border border-[var(--border-soft)] bg-white/72 p-4 text-sm font-semibold leading-7 text-[var(--graphite)]">
-            Google ile giriş yaptıysan ilerleme Supabase tarafında senkronize edilir. Giriş yapmadan da localStorage üzerinden çalışmaya devam edebilirsin.
-          </p>
 
           <Button variant="ghost" className="mt-5 w-full border-[#9a3412]/20 bg-[#fff0e9] text-[#9a3412]" onClick={resetProgress}>
             <RotateCcw size={18} />

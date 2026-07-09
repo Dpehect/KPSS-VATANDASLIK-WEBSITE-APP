@@ -18,11 +18,30 @@ type TutorOptions = { history?: KpssTutorHistoryItem[] };
 type DirectFact = { aliases: string[]; title: string; answer: string; examTip: string };
 
 const DIRECT_FACTS: DirectFact[] = [
-  { aliases: ["put kirici", "put kırıcı", "putkiran", "put kıran", "gazneli mahmut"], title: "Put Kırıcı / Gazneli Mahmut", answer: "Put Kırıcı unvanı Gazneli Mahmut için kullanılır. Gazneli Mahmut Hindistan seferleriyle tanınır ve putperest merkezlere karşı mücadelesi sebebiyle bu unvanla anılır.", examTip: "Artuklular; Mardin, Diyarbakır, Harput, Malabadi Köprüsü ve El-Cezeri ile eşleştirilir. Put Kırıcı Artuklular değildir." },
-  { aliases: ["kut", "kut anlayisi", "kut anlayışı", "kut inanci"], title: "Kut Anlayışı", answer: "Kut anlayışı, hükümdara devleti yönetme yetkisinin Tanrı tarafından verildiğine inanılmasıdır. Bu anlayış hanedan üyelerine tahta çıkma hakkı verdiği için veraset belirsizliği ve taht kavgalarına zemin hazırlamıştır.", examTip: "KPSS'de kut anlayışı genellikle ülke hanedanın ortak malıdır anlayışı ve devletlerin kısa ömürlü olmasıyla ilişkilendirilir." },
-  { aliases: ["senedi ittifak", "sened i ittifak", "tanzimat", "i mesrutiyet", "1 mesrutiyet", "meşrutiyet kronoloji"], title: "Sened-i İttifak → Tanzimat → I. Meşrutiyet", answer: "Doğru kronolojik sıra Sened-i İttifak (1808), Tanzimat Fermanı (1839), Islahat Fermanı (1856), I. Meşrutiyet ve Kanun-i Esasi (1876) şeklindedir.", examTip: "Sened-i İttifak II. Mahmut, Tanzimat ve Islahat Abdülmecit, I. Meşrutiyet II. Abdülhamit dönemiyle eşleştirilir." },
-  { aliases: ["miryokefalon", "miriyokefalon", "malazgirt miryokefalon", "anadolu turk yurdu"], title: "Malazgirt - Miryokefalon Farkı", answer: "Malazgirt Savaşı 1071'de Anadolu'nun kapılarını Türklere açmıştır. Miryokefalon Savaşı 1176'da Bizans'ın Anadolu'yu geri alma umudunu kırmış ve Anadolu'nun Türk yurdu oluşunu kesinleştirmiştir.", examTip: "Kısa ezber: Malazgirt kapıyı açar, Miryokefalon Türk yurdu olduğunu kesinleştirir." },
-  { aliases: ["kosedag", "kösedağ", "mogol", "moğol", "anadolu selcuklu yikilis"], title: "Kösedağ Savaşı", answer: "Kösedağ Savaşı 1243'te Türkiye Selçuklu Devleti ile Moğollar arasında yapılmıştır. Selçukluların yenilmesiyle devlet Moğol etkisine girmiş, merkezi otorite zayıflamış ve Anadolu'da beylikler güçlenmiştir.", examTip: "Kösedağ, Türkiye Selçuklu Devleti'nin zayıflama sürecindeki ana kırılma noktasıdır." },
+  {
+    aliases: ["anayasa mahkemesi uye", "anayasa mahkemesi kac uye", "aym uye sayisi", "aym kac uye"],
+    title: "Anayasa Mahkemesi Üye Sayısı",
+    answer: "Anayasa Mahkemesi üye sayısı 15'tir. Bu üyelerin 3'ünü TBMM (2 Sayıştay, 1 baro başkanları arasından), 12'sini ise Cumhurbaşkanı doğrudan seçer.",
+    examTip: "KPSS'de üyelerin kim tarafından seçildiği sıklıkla sorulur. 3 üye TBMM, 12 üye Cumhurbaşkanı."
+  },
+  {
+    aliases: ["cumhurbaşkanı secilme yasi", "cumhurbackani secilme sartlari", "cb yasi", "cumhurbaşkanı secilme sartlari"],
+    title: "Cumhurbaşkanı Seçilme Şartları",
+    answer: "Cumhurbaşkanı seçilebilmek için: Türk vatandaşı olmak, 40 yaşını doldurmuş olmak, yükseköğrenim yapmış olmak, milletvekili seçilme yeterliliğine sahip olmak ve en son yapılan genel seçimlerde toplam geçerli oyların tek başına veya birlikte en az %5'ini almış olan siyasi partiler veya en az 100 bin seçmen tarafından aday gösterilmiş olmak gerekir.",
+    examTip: "Yaş şartı (40) ve yükseköğrenim mezuniyeti KPSS'de en çok çeldirici olarak kullanılan şartlardır."
+  },
+  {
+    aliases: ["milletvekili secilme yasi", "milletvekili secilme sartlari", "mv secilme yasi", "milletvekili secilme yasi"],
+    title: "Milletvekili Seçilme Şartları",
+    answer: "Milletvekili seçilebilmek için: Türk vatandaşı olmak, 18 yaşını doldurmuş olmak, en az ilkokul mezunu olmak, askerlikle ilişiği bulunmamak, kamu hizmetlerinden yasaklı olmamak ve taksirli suçlar hariç toplam 1 yıl veya daha fazla hapis cezası almamış olmak gerekir.",
+    examTip: "Milletvekili seçilme yaşı 2017 anayasa değişikliği ile 18'e düşürülmüştür. Askerlik şartı ise 'askerlikle ilişiği bulunmamak' şeklindedir."
+  },
+  {
+    aliases: ["tbmm uye sayisi", "kac milletvekili", "milletvekili sayisi", "tbmm uye"],
+    title: "TBMM Üye Sayısı",
+    answer: "TBMM üye sayısı 600 milletvekilidir. Bu sayı 2017 anayasa değişikliği ile 550'den 600'e çıkarılmıştır.",
+    examTip: "Üye tamsayısı (600), anayasa değişiklikleri ve karar yeter sayıları hesaplanırken temel alınır."
+  }
 ];
 
 function normalize(value: string) {
@@ -54,23 +73,55 @@ function directAnswer(fact: DirectFact): KpssTutorAnswer {
 export async function answerKpssQuestion(message: string, options: TutorOptions = {}): Promise<KpssTutorAnswer> {
   const clean = message.trim();
   if (!clean) {
-    const reply = "Bir soru, kavram, olay veya konu başlığı yaz; net cevap ve kısa açıklama ile yardımcı olayım.";
+    const reply = "Ben sadece KPSS Vatandaşlık konu/kavram tanımları ve 'nedir' tarzı bilgi sorularına cevap verebilirim. Lütfen öğrenmek istediğiniz kavramı (örn: 'yasama dokunulmazlığı nedir' veya 'anayasa mahkemesi') yazın.";
     return { reply, answer: reply, source: "local-teacher", sourceMode: "local-teacher", confidence: 0.5, sources: [{ type: "Öğretmen", title: "Karşılama" }] };
   }
   
   const greeting = ["selam", "merhaba", "slm", "mrb", "günaydın", "iyi akşamlar", "iyi aksamlar"].includes(normalize(clean));
   if (greeting) {
-    const reply = "Merhaba. KPSS Tarih’ten bir soru, kavram, antlaşma, kişi veya konu başlığı yazabilirsin; net cevap, kısa açıklama ve sınav ipucuyla yanıtlayayım.";
+    const reply = "Merhaba! Ben KPSS Vatandaşlık Rehberi'yim. **[UYARI: Ben sadece konu/kavram tanımları ve 'nedir' tarzı bilgi sorularına cevap verebilirim.]** Sormak istediğiniz KPSS Vatandaşlık kavramını (örn: 'idari vesayet nedir?') yazın, veritabanından tarayıp açıklayayım.";
     return { reply, answer: reply, source: "local-teacher", sourceMode: "local-teacher", confidence: 0.9, sources: [{ type: "Öğretmen", title: "Karşılama" }] };
   }
 
+  // Check if it's a "nedir" style question
+  const lowerQuery = clean.toLowerCase();
+  const isDefinitionQuery = 
+    lowerQuery.includes("nedir") || 
+    lowerQuery.includes("kimdir") || 
+    lowerQuery.includes("nelerdir") || 
+    lowerQuery.includes("nasıldır") || 
+    lowerQuery.includes("nasildir") || 
+    lowerQuery.includes("kaçtır") || 
+    lowerQuery.includes("kactir") || 
+    lowerQuery.includes("ne demek") || 
+    lowerQuery.includes("tanımı") || 
+    lowerQuery.includes("tanimi") || 
+    lowerQuery.includes("hakkında") || 
+    lowerQuery.includes("hakkinda") || 
+    lowerQuery.includes("şartları") || 
+    lowerQuery.includes("sartlari") ||
+    lowerQuery.length < 20; // Short queries like "idari vesayet" are considered definition searches
+
+  if (!isDefinitionQuery) {
+    const reply = "Bu chatbot sadece KPSS Vatandaşlık konuları ve 'nedir' tarzı bilgi sorularına yanıt verecek şekilde sınırlandırılmıştır. Lütfen doğrudan öğrenmek istediğiniz anayasal/hukuki kavramı (örn: 'hükümsüzlük nedir?') sorunuz.";
+    return { reply, answer: reply, source: "local-teacher", sourceMode: "local-teacher", confidence: 0.8, sources: [{ type: "Öğretmen", title: "Sınırlama Uyarısı" }] };
+  }
+
   const direct = findDirectFact(clean);
-  if (direct) return directAnswer(direct);
+  if (direct) {
+    const ans = directAnswer(direct);
+    ans.reply = `[Kaynak: Doğrudan Bilgi]\n\n${ans.reply}`;
+    return ans;
+  }
 
   const localSearch = searchLocalEncyclopedia(clean);
-  if (localSearch) return localSearch as KpssTutorAnswer;
+  if (localSearch) {
+    const ans = localSearch as KpssTutorAnswer;
+    ans.reply = `[Kaynak Konu: ${ans.matchedTitle || "Vatandaşlık Bilgisi"}]\n\n${ans.reply}`;
+    return ans;
+  }
   
-  const reply = "Sorunuzla ilgili veritabanımızda net bir eşleşme bulamadım. Lütfen farklı kelimelerle veya doğrudan kavram ismi yazarak tekrar deneyin.";
+  const reply = "Aradığınız kavramı veritabanımızda bulamadım. Bu rehber sadece KPSS Vatandaşlık konu/kavram tanımları ve 'nedir' tarzı bilgi sorularına cevap verebilir. Lütfen aramanızı daha net bir kavramla (örn: 'idari vesayet') tekrar deneyin.";
   return { reply, answer: reply, source: "local-teacher", sourceMode: "local-teacher", confidence: 0.1, sources: [{ type: "Öğretmen", title: "Sonuç Bulunamadı" }] };
 }
 

@@ -72,7 +72,7 @@ export function AnalyticsPage() {
 
     return {
       title: "Çalışma Temposunu Artırın",
-      body: `Mevcut doğruluk oranınız %${accuracy}. KPSS Vatandaşlık'te netlerinizi yükseltmek için öncelikle konuların detaylı özetlerini okuyup, ardından kolay ve orta düzey testlerle soru pratiklerinizi pekiştirmeniz faydalı olacaktır.`,
+      body: `Mevcut doğruluk oranınız %${accuracy}. KPSS Vatandaşlık'ta netlerinizi yükseltmek için öncelikle konuların detaylı özetlerini okuyup, ardından kolay ve orta düzey testlerle soru pratiklerinizi pekiştirmeniz faydalı olacaktır.`,
       tip: "Öneri: Yanlış yaptığınız soruları 'Yanlış Defteri' üzerinden düzenli tekrar edin."
     };
   }, [mounted, answered, accuracy, weakestTopics]);

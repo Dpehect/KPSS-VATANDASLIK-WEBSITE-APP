@@ -124,9 +124,9 @@ export async function ExamsPage() {
           <div className="mx-auto grid size-16 place-items-center rounded-3xl bg-blue-700/10 text-[var(--sb-primary)]">
             <FileQuestion size={28} />
           </div>
-          <h2 className="mt-5 text-xl font-black text-[var(--sb-text)]">Denemeler Eş Zamanlanıyor</h2>
+          <h2 className="mt-5 text-xl font-black text-[var(--sb-text)]">Denemeler Yükleniyor</h2>
           <p className="mt-2 text-sm text-[var(--sb-text-soft)]">
-            KPSS Vatandaşlık deneme sınavları bulut veritabanı ile senkronize ediliyor. Bağlantı tamamlandığında tüm deneme sınavları bu alanda listelenecektir.
+            KPSS Vatandaşlık deneme sınavları yükleniyor. Lütfen bekleyin.
           </p>
         </section>
       )}

@@ -28,14 +28,14 @@ type HistoryItem = {
 };
 
 const QUICK_PROMPTS = [
-  "Put kırıcı kimdir?",
-  "Kut anlayışı KPSS'de nasıl sorulur?",
-  "Sened-i İttifak, Tanzimat ve I. Meşrutiyet sırası nedir?",
-  "Malazgirt ile Miryokefalon farkı nedir?",
+  "Anayasa Mahkemesi üye sayısı kaçtır?",
+  "Yasama dokunulmazlığı nedir?",
+  "Cumhurbaşkanı seçilme şartları nelerdir?",
+  "Hukuk kurallarının yaptırımları nelerdir?",
 ];
 
 const WELCOME_TEXT =
-  "Merhaba. Ben KPSS Vatandaşlık Rehberi’yim. Sorunu önce uygulamadaki konu, kavram, anayasal süreç ve soru havuzuyla eşleştiririm; ardından öğretmen gibi kısa, net ve sınav odaklı açıklarım.";
+  "Merhaba. Ben KPSS Vatandaşlık Rehberi'yim. [ÖNEMLİ UYARI: Ben sadece konu/kavram tanımları ve 'nedir' tarzı bilgi sorularına cevap verebilirim.] Öğrenmek istediğiniz anayasal veya hukuki kavramı yazın, veritabanından tarayıp kaynak konu başlığıyla birlikte açıklayayım.";
 
 function renderInlineMarkdown(text: string) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);

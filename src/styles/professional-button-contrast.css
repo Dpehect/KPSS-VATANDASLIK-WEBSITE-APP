@@ -1,7 +1,7 @@
 :root {
-  --kpss-button-text-on-light: #0e1117;
+  --kpss-button-text-on-light: #101828;
   --kpss-button-text-on-light-muted: #354052;
-  --kpss-button-text-on-dark: #fffaf2;
+  --kpss-button-text-on-dark: #ffffff;
   --kpss-button-border-light: rgba(14, 17, 23, 0.14);
   --kpss-button-border-dark: rgba(255, 250, 242, 0.18);
 }
@@ -34,7 +34,7 @@ html[data-theme="dark"] {
   [class*="bg-[#fff"], [class*="bg-[#f8"], [class*="bg-[#f9"], [class*="bg-[#faf"], [class*="bg-[#fb"], [class*="bg-[#fc"], [class*="bg-[#fd"], [class*="bg-[#fe"],
   [class*="bg-[var(--paper"], [class*="bg-[var(--warm-white"], [class*="bg-[var(--cream"]
 ) {
-  color: #0e1117 !important;
+  color: #101828 !important;
   border-color: rgba(14, 17, 23, 0.14);
 }
 
