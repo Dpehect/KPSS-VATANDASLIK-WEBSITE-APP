@@ -93,7 +93,7 @@ export function DashboardPage() {
               <Link href={nextTopic ? `/topics/${nextTopic.slug}` : "/topics"} className="btn-accent">
                 Devam et <ArrowRight size={17} />
               </Link>
-              <Link href="/question-bank" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/14 bg-white/10 px-5 text-sm font-black text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-white/15">
+              <Link href="/question-bank" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-blue-600 bg-blue-600 px-5 text-sm font-black text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-500">
                 Teste geç <ClipboardList size={17} />
               </Link>
             </div>

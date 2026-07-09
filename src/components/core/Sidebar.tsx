@@ -13,6 +13,7 @@ import {
   Layers3,
   NotebookPen,
   ShieldCheck,
+  ShieldAlert,
   Sparkles,
   Target,
   Trophy,
@@ -21,6 +22,7 @@ import {
 import { SBBrandMark } from "@/components/brand/SBBrandMark";
 import { AuthStatusButton } from "@/features/auth/components/AuthStatusButton";
 import { cn } from "@/lib/cn";
+import { useAdminSession } from "@/hooks/useAdminSession";
 
 export type ShellNavGroup = "Ana Akış" | "Öğrenme" | "Pratik" | "Analiz";
 
@@ -65,7 +67,23 @@ export function Sidebar({
   onCollapseChange?: (value: boolean) => void;
   onNavigate?: () => void;
 }) {
-  const grouped = groupOrder.map((group) => ({ group, items: shellNavItems.filter((item) => item.group === group) }));
+  const { isAdmin } = useAdminSession();
+  const navItems = [...shellNavItems];
+  
+  if (isAdmin) {
+    navItems.push({
+      label: "Yönetim",
+      shortLabel: "Admin",
+      href: "/admin",
+      icon: ShieldAlert,
+      group: "Ana Akış",
+      description: "Sistem ve içerik yönetimi",
+      iconColorClass: "text-slate-800 dark:text-slate-200",
+      iconBgClass: "bg-slate-500/10 dark:bg-slate-500/20",
+    });
+  }
+
+  const grouped = groupOrder.map((group) => ({ group, items: navItems.filter((item) => item.group === group) }));
 
   return (
     <aside

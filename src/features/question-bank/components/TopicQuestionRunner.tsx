@@ -195,12 +195,14 @@ export function TopicQuestionRunner({ questions, topicTitle }: { questions: Ques
                 }`}
               >
                 <span
-                  className={`grid size-10 shrink-0 place-items-center rounded-full text-sm font-black ${
+                  className={`grid size-10 shrink-0 place-items-center rounded-full text-sm font-black transition ${
                     isCorrectChoice
-                      ? "bg-[var(--bureau-teal)] text-[var(--bureau-inverse)]"
+                      ? "bg-teal-500 text-white"
                       : isWrongChoice
-                        ? "bg-[var(--bureau-rust)] text-[var(--bureau-inverse)]"
-                        : "bg-white/[.12] text-[var(--bureau-inverse)]"
+                        ? "bg-red-500 text-white"
+                        : isSelectedButWaiting
+                          ? "bg-blue-600 text-white"
+                          : "bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-100 group-hover:bg-blue-100 dark:group-hover:bg-slate-600"
                   }`}
                 >
                   {choice.id}
