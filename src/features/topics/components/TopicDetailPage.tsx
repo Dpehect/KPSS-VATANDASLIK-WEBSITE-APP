@@ -22,7 +22,7 @@ export async function TopicDetailPage({ slug }: { slug: string }) {
             <Link href="/topics" className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200">
               <ArrowLeft size={16} /> Konulara dön
             </Link>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">Supabase bilgi havuzu</p>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">Geniş Bilgi Havuzu</p>
             <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-white md:text-5xl">{topic.title}</h1>
             <p className="max-w-3xl text-base leading-8 text-slate-700 dark:text-slate-300">{topic.shortDescription}</p>
             <div className="flex flex-wrap gap-2">
@@ -38,7 +38,7 @@ export async function TopicDetailPage({ slug }: { slug: string }) {
       <section className="grid gap-4 md:grid-cols-4">
         <Metric icon={<Target size={18} />} label="Sınav önemi" value={`%${topic.examImportance}`} helper="KPSS ağırlığı" />
         <Metric icon={<Clock3 size={18} />} label="Önerilen süre" value={`${topic.estimatedMinutes} dk`} helper="Odaklı çalışma" />
-        <Metric icon={<FileQuestion size={18} />} label="Test / soru" value={`${tests.length} / ${totalQuestions}`} helper="Supabase hazır" />
+        <Metric icon={<FileQuestion size={18} />} label="Test / soru" value={`${tests.length} / ${totalQuestions}`} helper="Çözüme hazır" />
         <Metric icon={<BrainCircuit size={18} />} label="Tekrar kartı" value={flashcards.length} helper="Aktif hatırlama" />
       </section>
 
@@ -90,7 +90,7 @@ export async function TopicDetailPage({ slug }: { slug: string }) {
             </ul>
           </SidePanel>
           <SidePanel icon={<KeyRound size={18} />} title="Sözlük ve kartlar">
-            <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">Bu konuya bağlı {glossary.length} sözlük maddesi, {flashcards.length} flashcard ve {questions.length} temel soru Supabase havuzunda hazır bekliyor.</p>
+            <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">Bu konuya bağlı {glossary.length} sözlük maddesi, {flashcards.length} flashcard ve {questions.length} temel soru gelişmiş altyapımızda özenle hazırlanmıştır.</p>
             <div className="mt-4 grid gap-2">
               <Link href={`/question-bank/${topic.id}`} className="rounded-full bg-blue-900 px-4 py-3 text-center text-sm font-black text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-800">Açıklamalı test çöz</Link>
               <Link href="/flashcards" className="rounded-full border border-slate-200 bg-white px-4 py-3 text-center text-sm font-black text-slate-800 shadow-sm transition hover:-translate-y-0.5 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100">Kartlarla tekrar et</Link>

@@ -52,7 +52,7 @@ export async function ExamRunnerPage({ examId }: { examId: string }) {
           <div className="mt-5 flex flex-wrap gap-3">
             <Badge icon={<FileQuestion size={16} />} text={`${questions.length} soru`} />
             <Badge icon={<Clock size={16} />} text={`${preset.minutes} dakika`} />
-            <Badge icon={<Target size={16} />} text="Supabase soru havuzu" />
+            <Badge icon={<Target size={16} />} text="Özgün Soru Havuzu" />
           </div>
         </div>
       </section>
@@ -61,7 +61,7 @@ export async function ExamRunnerPage({ examId }: { examId: string }) {
         <TopicQuestionRunner questions={questions} topicTitle={preset.title} />
       ) : (
         <section className="rounded-[2rem] border border-[#f7b2b7] bg-[#fff1f2] p-6 text-sm font-black text-[#b4232a]">
-          Bu deneme için Supabase’den soru gelmedi. content_questions tablosunu kontrol et.
+          Bu deneme için uygun soru bulunamadı. Lütfen daha sonra tekrar deneyin.
         </section>
       )}
     </div>

@@ -45,7 +45,7 @@ export async function ExamsPage() {
               Gerçek sınav temposuna geç.
             </h1>
             <p className="mt-4 max-w-2xl text-sm font-medium leading-7 text-[var(--sb-text-soft)]">
-              Tüm denemeler Supabase soru havuzundan çalışır. Her deneme başlatıldığında sorular gerçek zamanlı olarak hazırlanır.
+              Tüm denemeler geniş kapsamlı güncel soru havuzumuzdan özenle seçilir. Her deneme başlatıldığında, sınav deneyiminiz için özgün sorular gerçek zamanlı olarak hazırlanır.
             </p>
           </div>
 

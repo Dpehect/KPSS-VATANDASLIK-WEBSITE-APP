@@ -48,7 +48,7 @@ export function LandingPage() {
             <div className="mt-6 space-y-3">
               <FeatureLine icon={<BookOpen size={18} />} title="Özet odaklı öğrenme" body="Her konu, test sayfası ve tekrar akışı ayrı düşünülür." />
               <FeatureLine icon={<FileQuestion size={18} />} title="Konu bazlı test sayfaları" body="Side panel yerine her konunun kendi test ekranı bulunur." />
-              <FeatureLine icon={<LineChart size={18} />} title="Online istatistik" body="Google giriş sonrası ilerleme Supabase üzerinde saklanır." />
+              <FeatureLine icon={<LineChart size={18} />} title="Online istatistik" body="Google giriş sonrası tüm ilerlemeniz güvenli bulut altyapımızda saklanır." />
               <FeatureLine icon={<ShieldCheck size={18} />} title="Admin kontrollü yapı" body="Yetkili hesap kullanıcı verilerini ve içerikleri yönetebilir." />
             </div>
           </div>
