@@ -314,7 +314,6 @@ input, textarea, select { background: var(--sb-surface-strong); color: var(--sb-
 .btn-accent *,
 .btn-gold * { color: #111827 !important; fill: currentColor; stroke: currentColor; }
 
-.btn-ghost,
 .btn-light,
 [data-light-button="true"] {
   display: inline-flex;
@@ -332,12 +331,30 @@ input, textarea, select { background: var(--sb-surface-strong); color: var(--sb-
   box-shadow: var(--sb-shadow-xs);
   transition: transform 180ms var(--sb-ease), box-shadow 180ms var(--sb-ease), background 180ms var(--sb-ease);
 }
-.btn-ghost:hover,
 .btn-light:hover,
 [data-light-button="true"]:hover { transform: translateY(-1px); background: var(--sb-surface-strong); box-shadow: var(--sb-shadow-sm); }
-.btn-ghost *,
 .btn-light *,
 [data-light-button="true"] * { color: var(--sb-text) !important; fill: currentColor; stroke: currentColor; }
+
+.btn-ghost {
+  display: inline-flex;
+  min-height: 2.55rem;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  padding: .625rem 1rem;
+  transition: transform 180ms var(--sb-ease), background 180ms var(--sb-ease);
+}
+.btn-ghost:hover {
+  background: rgba(100, 116, 139, 0.12);
+}
+.btn-ghost * { color: inherit !important; fill: none; stroke: currentColor; }
 
 :is(button, a, [role="button"]):where([data-active="true"], [data-state="active"], [aria-selected="true"], [aria-pressed="true"], [aria-current="page"], [data-selected="true"]) {
   background: rgba(30, 58, 138, .10) !important;
@@ -349,11 +366,11 @@ html[data-theme="dark"] :is(button, a, [role="button"]):where([data-active="true
   border-color: rgba(147, 197, 253, .24) !important;
   color: var(--sb-primary-2) !important;
 }
-:is(button, a, [role="button"]):where([data-active="true"], [data-state="active"], [aria-selected="true"], [aria-pressed="true"], [aria-current="page"], [data-selected="true"]) * { color: currentColor !important; fill: currentColor !important; stroke: currentColor !important; }
+:is(button, a, [role="button"]):where([data-active="true"], [data-state="active"], [aria-selected="true"], [aria-pressed="true"], [aria-current="page"], [data-selected="true"]) * { color: currentColor !important; }
 
 /* Only explicit dark surfaces get forced white text. No broad bg-gradient/from-slate selector here. */
 :is(.btn-primary, .btn-dark, [data-dark-button="true"], .dark-surface, .bureau-stage, .lab-stage, .atlas-dark, .archive-dark, .surface-dark, [data-tone="dark"]) { color: #ffffff !important; }
-:is(.btn-primary, .btn-dark, [data-dark-button="true"], .dark-surface, .bureau-stage, .lab-stage, .atlas-dark, .archive-dark, .surface-dark, [data-tone="dark"]) * { color: #ffffff !important; fill: currentColor !important; stroke: currentColor !important; }
+:is(.btn-primary, .btn-dark, [data-dark-button="true"], .dark-surface, .bureau-stage, .lab-stage, .atlas-dark, .archive-dark, .surface-dark, [data-tone="dark"]) :where(h1, h2, h3, h4, h5, h6, p, li, label, strong, span:not(.btn-ghost *):not(.btn-light *):not(.btn-primary *):not([class*="bg-white"] *)) { color: #ffffff !important; }
 
 .progress-track { height: .5rem; overflow: hidden; border-radius: 999px; background: rgba(100, 116, 139, .18); }
 .progress-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--sb-primary), var(--sb-primary-2), var(--sb-accent)); transition: width 760ms var(--sb-ease); }

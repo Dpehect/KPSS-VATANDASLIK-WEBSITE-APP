@@ -1,14 +1,14 @@
 import { ArrowLeft, Clock, FileQuestion, Target } from "lucide-react";
 import { fetchContentExamQuestions } from "@/lib/content/supabase-content-server";
 import { TopicQuestionRunner } from "@/features/question-bank/components/TopicQuestionRunner";
+import { questions as localQuestions } from "@/data/kpss";
 
 const exams = [
-  { id: "deneme-1", title: "Genel Tekrar Denemesi 1", minutes: 60, questionCount: 60 },
-  { id: "deneme-2", title: "Temel Anayasa Denemesi", minutes: 60, questionCount: 60 },
-  { id: "deneme-3", title: "Anayasal Süreç Denemesi", minutes: 60, questionCount: 60 },
-  { id: "deneme-4", title: "Atatürk İlkeleri Denemesi", minutes: 60, questionCount: 60 },
-  { id: "deneme-5", title: "Zorlayıcı Final Denemesi", minutes: 60, questionCount: 60 },
-  { id: "deneme-6", title: "Hızlı Kontrol Denemesi", minutes: 45, questionCount: 50 }
+  { id: "deneme-1", title: "KPSS Vatandaşlık Deneme Sınavı - 1", minutes: 15, questionCount: 15 },
+  { id: "deneme-2", title: "KPSS Vatandaşlık Deneme Sınavı - 2", minutes: 15, questionCount: 15 },
+  { id: "deneme-3", title: "KPSS Vatandaşlık Deneme Sınavı - 3", minutes: 20, questionCount: 15 },
+  { id: "deneme-4", title: "Vatandaşlık Genel Tarama Denemesi", minutes: 25, questionCount: 20 },
+  { id: "deneme-5", title: "KPSS Vatandaşlık Şampiyonlar Provası", minutes: 30, questionCount: 30 },
 ];
 
 function getExamIndex(examId: string) {
@@ -18,7 +18,19 @@ function getExamIndex(examId: string) {
 
 export async function ExamRunnerPage({ examId }: { examId: string }) {
   const preset = exams.find((exam) => exam.id === examId) ?? exams[0];
-  const questions = await fetchContentExamQuestions(getExamIndex(examId), preset.questionCount);
+  let questions = await fetchContentExamQuestions(getExamIndex(examId), preset.questionCount);
+
+  if (!questions || questions.length === 0) {
+    if (localQuestions && localQuestions.length > 0) {
+      const examIndex = getExamIndex(examId);
+      const limit = preset.questionCount;
+      const offset = (examIndex - 1) * limit;
+      questions = localQuestions.slice(offset, offset + limit);
+      if (questions.length === 0) {
+        questions = localQuestions.slice(0, limit);
+      }
+    }
+  }
 
   return (
     <div className="grid gap-6">
