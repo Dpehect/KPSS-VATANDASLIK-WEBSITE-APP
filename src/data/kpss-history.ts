@@ -1,0 +1,15 @@
+export {
+  topics,
+  questions,
+  flashcards,
+  timelineEvents,
+  glossary,
+  exams,
+  recommendations,
+  getTopicBySlug,
+  getTopicById,
+  getQuestionsByTopic,
+  getFlashcardsByTopic,
+  getTimelineEventsByTopic,
+  getGlossaryByTopic,
+} from "@/data/kpss";

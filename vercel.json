@@ -1,0 +1,3 @@
+{
+  "buildCommand": "node scripts/vercel-supabase-preloaded-pipeline.mjs"
+}

@@ -1,0 +1,532 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #1e3a8a;
+  --primary-foreground: #ffffff;
+  --secondary: #e2e8f0;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #d97706;
+  --accent-foreground: #111827;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(15, 23, 42, 0.11);
+  --input: rgba(15, 23, 42, 0.14);
+  --ring: rgba(30, 58, 138, 0.34);
+  --radius: 1rem;
+
+  --sb-bg: #f8fafc;
+  --sb-bg-soft: #f1f5f9;
+  --sb-surface: rgba(255, 255, 255, 0.88);
+  --sb-surface-strong: #ffffff;
+  --sb-surface-muted: #f8fafc;
+  --sb-text: #0f172a;
+  --sb-text-soft: #475569;
+  --sb-text-muted: #64748b;
+  --sb-primary: #1e3a8a;
+  --sb-primary-2: #2563eb;
+  --sb-accent: #d97706;
+  --sb-accent-2: #f59e0b;
+  --sb-success: #059669;
+  --sb-danger: #dc2626;
+  --sb-line: rgba(15, 23, 42, 0.10);
+  --sb-line-strong: rgba(15, 23, 42, 0.16);
+  --sb-shadow-xs: 0 4px 16px rgba(15, 23, 42, 0.05);
+  --sb-shadow-sm: 0 10px 30px rgba(15, 23, 42, 0.07);
+  --sb-shadow-md: 0 20px 60px rgba(15, 23, 42, 0.11);
+  --sb-shadow-lg: 0 32px 100px rgba(15, 23, 42, 0.16);
+  --sb-ease: cubic-bezier(.22, 1, .36, 1);
+
+  /* Legacy aliases kept for older pages. */
+  --warm-white: var(--sb-surface-strong);
+  --shadow-xs: var(--sb-shadow-xs);
+  --bureau-bone: var(--sb-bg);
+  --bureau-bone-2: var(--sb-surface-strong);
+  --bureau-bone-3: #e2e8f0;
+  --bureau-ink: var(--sb-text);
+  --bureau-ink-2: #111827;
+  --bureau-copy: var(--sb-text-soft);
+  --bureau-muted: var(--sb-text-muted);
+  --bureau-soft: #94a3b8;
+  --bureau-blue: var(--sb-primary);
+  --bureau-blue-soft: rgba(30, 58, 138, .10);
+  --bureau-teal: var(--sb-primary-2);
+  --bureau-teal-soft: rgba(37, 99, 235, .10);
+  --bureau-plum: #7c3aed;
+  --bureau-plum-soft: rgba(124, 58, 237, .10);
+  --bureau-rust: var(--sb-accent);
+  --bureau-rust-soft: rgba(217, 119, 6, .12);
+  --bureau-line: var(--sb-line);
+  --bureau-line-2: var(--sb-line-strong);
+  --bureau-inverse: #ffffff;
+  --bureau-inverse-copy: rgba(255, 255, 255, .84);
+  --bureau-inverse-muted: rgba(255, 255, 255, .68);
+  --shadow-paper: var(--sb-shadow-sm);
+  --shadow-float: var(--sb-shadow-md);
+  --shadow-stage: var(--sb-shadow-lg);
+  --radius-sm: 14px;
+  --radius-md: 24px;
+  --ease-bureau: var(--sb-ease);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #020617;
+  --foreground: #f8fafc;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --popover: #0f172a;
+  --popover-foreground: #f8fafc;
+  --primary: #60a5fa;
+  --primary-foreground: #020617;
+  --secondary: #1e293b;
+  --secondary-foreground: #e2e8f0;
+  --muted: #0f172a;
+  --muted-foreground: #94a3b8;
+  --accent: #f59e0b;
+  --accent-foreground: #111827;
+  --destructive: #f87171;
+  --destructive-foreground: #020617;
+  --border: rgba(226, 232, 240, 0.12);
+  --input: rgba(226, 232, 240, 0.14);
+  --ring: rgba(96, 165, 250, 0.42);
+
+  --sb-bg: #020617;
+  --sb-bg-soft: #0f172a;
+  --sb-surface: rgba(15, 23, 42, 0.84);
+  --sb-surface-strong: #111827;
+  --sb-surface-muted: #0b1120;
+  --sb-text: #f8fafc;
+  --sb-text-soft: #cbd5e1;
+  --sb-text-muted: #94a3b8;
+  --sb-primary: #60a5fa;
+  --sb-primary-2: #93c5fd;
+  --sb-accent: #f59e0b;
+  --sb-accent-2: #fbbf24;
+  --sb-success: #34d399;
+  --sb-danger: #f87171;
+  --sb-line: rgba(226, 232, 240, 0.12);
+  --sb-line-strong: rgba(226, 232, 240, 0.18);
+  --sb-shadow-xs: 0 4px 16px rgba(0, 0, 0, 0.18);
+  --sb-shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.24);
+  --sb-shadow-md: 0 20px 70px rgba(0, 0, 0, 0.34);
+  --sb-shadow-lg: 0 32px 100px rgba(0, 0, 0, 0.44);
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; scroll-behavior: smooth; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--sb-text);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(30, 58, 138, .09), transparent 28rem),
+    radial-gradient(circle at 90% 8%, rgba(217, 119, 6, .07), transparent 24rem),
+    linear-gradient(180deg, var(--sb-bg) 0%, var(--sb-bg-soft) 100%);
+  font-family: var(--font-sans), Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .48;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, .08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black 0 56%, transparent 94%);
+}
+
+::selection { color: var(--primary-foreground); background: var(--sb-primary); }
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+}
+input, textarea, select { background: var(--sb-surface-strong); color: var(--sb-text); }
+
+.content-shell { width: min(1480px, calc(100% - 28px)); margin-inline: auto; }
+@media (min-width: 768px) { .content-shell { width: min(1480px, calc(100% - 56px)); } }
+
+.heading-display, .bureau-display, .lab-display {
+  color: var(--sb-text);
+  font-weight: 850;
+  letter-spacing: -0.055em;
+  line-height: .98;
+}
+.kicker, .bureau-kicker, .lab-kicker {
+  color: var(--sb-accent);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.text-muted-foreground { color: var(--sb-text-muted) !important; }
+.bg-card { background: var(--card) !important; }
+.border-border { border-color: var(--border) !important; }
+
+.card-surface,
+.bureau-card,
+.lab-card,
+.atlas-card,
+.archive-card,
+[data-atlas-card="true"],
+[data-lab-card="true"],
+[data-bureau-card="true"] {
+  border: 1px solid var(--sb-line);
+  border-radius: 1.5rem;
+  background: var(--sb-surface);
+  color: var(--sb-text);
+  box-shadow: var(--sb-shadow-sm);
+  backdrop-filter: blur(18px) saturate(1.08);
+  transition: transform 220ms var(--sb-ease), box-shadow 220ms var(--sb-ease), border-color 220ms var(--sb-ease), background 220ms var(--sb-ease);
+}
+.card-surface:hover,
+.bureau-card:hover,
+.lab-card:hover,
+.atlas-card:hover,
+.archive-card:hover,
+[data-atlas-card="true"]:hover,
+[data-lab-card="true"]:hover,
+[data-bureau-card="true"]:hover {
+  transform: translateY(-3px);
+  border-color: rgba(30, 58, 138, .26);
+  box-shadow: var(--sb-shadow-md);
+}
+
+.bureau-surface,
+.lab-surface,
+.atlas-panel,
+.archive-panel,
+.surface-glass {
+  border: 1px solid var(--sb-line);
+  border-radius: 1.5rem;
+  background: var(--sb-surface);
+  color: var(--sb-text);
+  box-shadow: var(--sb-shadow-sm);
+  backdrop-filter: blur(18px) saturate(1.08);
+}
+
+.dark-surface,
+.bureau-stage,
+.lab-stage,
+.atlas-dark,
+.archive-dark,
+.surface-dark,
+[data-tone="dark"] {
+  border: 1px solid rgba(255, 255, 255, .10);
+  border-radius: 1.75rem;
+  background:
+    radial-gradient(circle at 14% 12%, rgba(96, 165, 250, .12), transparent 18rem),
+    radial-gradient(circle at 90% 14%, rgba(217, 119, 6, .10), transparent 16rem),
+    linear-gradient(135deg, #0f172a 0%, #111827 52%, #1e293b 100%);
+  color: #ffffff;
+  box-shadow: var(--sb-shadow-lg);
+}
+.dark-surface :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span),
+.bureau-stage :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span),
+.lab-stage :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span),
+.atlas-dark :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span),
+.archive-dark :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span),
+.surface-dark :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span),
+[data-tone="dark"] :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span) {
+  color: #ffffff;
+}
+
+/* Readability guard: light surfaces must never inherit invisible white text. */
+.surface-light,
+.premium-light,
+[data-tone="light"],
+[data-readable="light"],
+:is([class*="bg-white"], [class*="bg-slate-50"], [class*="bg-gray-50"], [class*="bg-zinc-50"], [class*="from-white"], [class*="via-white"], [class*="to-white"], [class*="from-slate-50"], [class*="to-slate-50"], [class*="from-blue-50"], [class*="to-blue-50"], [class*="from-sky-50"], [class*="to-sky-50"], [class*="from-indigo-50"], [class*="to-indigo-50"]) {
+  color: var(--sb-text);
+}
+.surface-light :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span,div),
+.premium-light :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span,div),
+[data-tone="light"] :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span,div),
+[data-readable="light"] :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span,div),
+:is([class*="bg-white"], [class*="bg-slate-50"], [class*="bg-gray-50"], [class*="bg-zinc-50"], [class*="from-white"], [class*="via-white"], [class*="to-white"], [class*="from-slate-50"], [class*="to-slate-50"], [class*="from-blue-50"], [class*="to-blue-50"], [class*="from-sky-50"], [class*="to-sky-50"], [class*="from-indigo-50"], [class*="to-indigo-50"]) :where(h1,h2,h3,h4,h5,h6,strong,b,p,li,small,label,span,div) {
+  /* color: var(--sb-text) !important; Removed to allow Tailwind text-white to work */
+}
+:is([class*="bg-white"], [class*="bg-slate-50"], [class*="bg-gray-50"], [class*="bg-zinc-50"], [class*="from-white"], [class*="via-white"], [class*="to-white"], [class*="from-slate-50"], [class*="to-slate-50"], [class*="from-blue-50"], [class*="to-blue-50"], [class*="from-sky-50"], [class*="to-sky-50"], [class*="from-indigo-50"], [class*="to-indigo-50"]) :where(.text-slate-500, .text-slate-600, .text-gray-500, .text-gray-600, .text-muted-foreground) {
+  /* color: var(--sb-text-soft) !important; Removed */
+}
+
+/* Buttons: light buttons use dark text, dark/accent buttons use readable text. */
+.btn-primary,
+.btn-dark,
+[data-dark-button="true"] {
+  display: inline-flex;
+  min-height: 2.55rem;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: 999px;
+  border: 1px solid var(--sb-primary);
+  background: linear-gradient(135deg, var(--sb-primary), #172554);
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 800;
+  padding: .625rem 1rem;
+  box-shadow: 0 16px 36px rgba(30, 58, 138, .18);
+  transition: transform 180ms var(--sb-ease), box-shadow 180ms var(--sb-ease), filter 180ms var(--sb-ease);
+}
+.btn-primary:hover,
+.btn-dark:hover,
+[data-dark-button="true"]:hover { transform: translateY(-1px); box-shadow: 0 22px 48px rgba(30, 58, 138, .24); filter: saturate(1.05); }
+.btn-primary *,
+.btn-dark *,
+[data-dark-button="true"] * { color: #ffffff !important; fill: currentColor; stroke: currentColor; }
+
+.btn-accent,
+.btn-gold {
+  display: inline-flex;
+  min-height: 2.55rem;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 119, 6, .55);
+  background: linear-gradient(135deg, var(--sb-accent), var(--sb-accent-2));
+  color: #111827 !important;
+  font-size: 13px;
+  font-weight: 850;
+  padding: .625rem 1rem;
+  box-shadow: 0 18px 42px rgba(217, 119, 6, .22);
+  transition: transform 180ms var(--sb-ease), box-shadow 180ms var(--sb-ease), filter 180ms var(--sb-ease);
+}
+.btn-accent:hover,
+.btn-gold:hover { transform: translateY(-1px); box-shadow: 0 22px 52px rgba(217, 119, 6, .28); }
+.btn-accent *,
+.btn-gold * { color: #111827 !important; fill: currentColor; stroke: currentColor; }
+
+.btn-ghost,
+.btn-light,
+[data-light-button="true"] {
+  display: inline-flex;
+  min-height: 2.55rem;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: 999px;
+  border: 1px solid var(--sb-line);
+  background: var(--sb-surface-strong);
+  color: var(--sb-text) !important;
+  font-size: 13px;
+  font-weight: 800;
+  padding: .625rem 1rem;
+  box-shadow: var(--sb-shadow-xs);
+  transition: transform 180ms var(--sb-ease), box-shadow 180ms var(--sb-ease), background 180ms var(--sb-ease);
+}
+.btn-ghost:hover,
+.btn-light:hover,
+[data-light-button="true"]:hover { transform: translateY(-1px); background: var(--sb-surface-strong); box-shadow: var(--sb-shadow-sm); }
+.btn-ghost *,
+.btn-light *,
+[data-light-button="true"] * { color: var(--sb-text) !important; fill: currentColor; stroke: currentColor; }
+
+:is(button, a, [role="button"]):where([data-active="true"], [data-state="active"], [aria-selected="true"], [aria-pressed="true"], [aria-current="page"], [data-selected="true"]) {
+  background: rgba(30, 58, 138, .10) !important;
+  border-color: rgba(30, 58, 138, .22) !important;
+  color: var(--sb-primary) !important;
+}
+html[data-theme="dark"] :is(button, a, [role="button"]):where([data-active="true"], [data-state="active"], [aria-selected="true"], [aria-pressed="true"], [aria-current="page"], [data-selected="true"]) {
+  background: rgba(96, 165, 250, .16) !important;
+  border-color: rgba(147, 197, 253, .24) !important;
+  color: var(--sb-primary-2) !important;
+}
+:is(button, a, [role="button"]):where([data-active="true"], [data-state="active"], [aria-selected="true"], [aria-pressed="true"], [aria-current="page"], [data-selected="true"]) * { color: currentColor !important; fill: currentColor !important; stroke: currentColor !important; }
+
+/* Only explicit dark surfaces get forced white text. No broad bg-gradient/from-slate selector here. */
+:is(.btn-primary, .btn-dark, [data-dark-button="true"], .dark-surface, .bureau-stage, .lab-stage, .atlas-dark, .archive-dark, .surface-dark, [data-tone="dark"]) { color: #ffffff !important; }
+:is(.btn-primary, .btn-dark, [data-dark-button="true"], .dark-surface, .bureau-stage, .lab-stage, .atlas-dark, .archive-dark, .surface-dark, [data-tone="dark"]) * { color: #ffffff !important; fill: currentColor !important; stroke: currentColor !important; }
+
+.progress-track { height: .5rem; overflow: hidden; border-radius: 999px; background: rgba(100, 116, 139, .18); }
+.progress-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--sb-primary), var(--sb-primary-2), var(--sb-accent)); transition: width 760ms var(--sb-ease); }
+.scrollbar-clean { scrollbar-width: thin; scrollbar-color: rgba(100,116,139,.34) transparent; }
+.scrollbar-clean::-webkit-scrollbar { width: 8px; height: 8px; }
+.scrollbar-clean::-webkit-scrollbar-thumb { border-radius: 999px; background: rgba(100,116,139,.34); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .001ms !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* KPSS_TARIH_PROFESSIONAL_BUTTON_CONTRAST_GUARD */
+:root {
+  --kpss-button-text-on-light: #0e1117;
+  --kpss-button-text-on-light-muted: #354052;
+  --kpss-button-text-on-dark: #fffaf2;
+  --kpss-button-border-light: rgba(14, 17, 23, 0.14);
+  --kpss-button-border-dark: rgba(255, 250, 242, 0.18);
+}
+
+html[data-theme="dark"] {
+  --kpss-button-text-on-light: #f8fafc;
+  --kpss-button-text-on-light-muted: #94a3b8;
+  --kpss-button-border-light: rgba(248, 250, 252, 0.16);
+}
+
+:where(button, a, [role="button"]) {
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Explicit light buttons (ghost, outline and light variables) */
+:where(.btn-light, .btn-ghost, .btn-outline, [data-light-button="true"], [data-button-surface="light"]) {
+  color: var(--kpss-button-text-on-light) !important;
+  border-color: var(--kpss-button-border-light);
+}
+
+/* Hardcoded solid light background buttons must always use dark text for contrast */
+:is(button, a, [role="button"]):where(
+  [class*="bg-white"],
+  [class*="bg-slate-50"], [class*="bg-slate-100"], [class*="bg-slate-200"],
+  [class*="bg-gray-50"], [class*="bg-gray-100"], [class*="bg-gray-200"],
+  [class*="bg-zinc-50"], [class*="bg-zinc-100"], [class*="bg-zinc-200"],
+  [class*="bg-neutral-50"], [class*="bg-neutral-100"], [class*="bg-neutral-200"],
+  [class*="bg-stone-50"], [class*="bg-stone-100"], [class*="bg-stone-200"],
+  [class*="bg-[#fff"], [class*="bg-[#f8"], [class*="bg-[#f9"], [class*="bg-[#faf"], [class*="bg-[#fb"], [class*="bg-[#fc"], [class*="bg-[#fd"], [class*="bg-[#fe"],
+  [class*="bg-[var(--paper"], [class*="bg-[var(--warm-white"], [class*="bg-[var(--cream"]
+) {
+  color: #0e1117 !important;
+  border-color: rgba(14, 17, 23, 0.14);
+}
+
+:where(.btn-light, .btn-ghost, .btn-outline, [data-light-button="true"], [data-button-surface="light"]) :where(span, strong, small, svg, path, i),
+:is(button, a, [role="button"]):where(
+  [class*="bg-white"],
+  [class*="bg-slate-50"], [class*="bg-slate-100"], [class*="bg-slate-200"],
+  [class*="bg-gray-50"], [class*="bg-gray-100"], [class*="bg-gray-200"],
+  [class*="bg-zinc-50"], [class*="bg-zinc-100"], [class*="bg-zinc-200"],
+  [class*="bg-neutral-50"], [class*="bg-neutral-100"], [class*="bg-neutral-200"],
+  [class*="bg-stone-50"], [class*="bg-stone-100"], [class*="bg-stone-200"],
+  [class*="bg-[#fff"], [class*="bg-[#f8"], [class*="bg-[#f9"], [class*="bg-[#faf"], [class*="bg-[#fb"], [class*="bg-[#fc"], [class*="bg-[#fd"], [class*="bg-[#fe"],
+  [class*="bg-[var(--paper"], [class*="bg-[var(--warm-white"], [class*="bg-[var(--cream"], [class*="bg-[var(--bureau-bone"],
+  [class*="bg-[rgba(255"], [class*="bg-[rgba(246"]
+) :where(span, strong, small, svg, path, i) {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* Explicit dark/accent buttons */
+:where(.btn-primary, .btn-dark, .btn-accent, .btn-gold, [data-dark-button="true"], [data-button-surface="dark"]),
+:is(button, a, [role="button"]):where(
+  [data-active="true"], [data-state="active"], [aria-selected="true"], [aria-pressed="true"], [aria-current="page"], [data-selected="true"],
+  [class*="bg-black"],
+  [class*="bg-slate-800"], [class*="bg-slate-900"], [class*="bg-slate-950"],
+  [class*="bg-gray-800"], [class*="bg-gray-900"], [class*="bg-gray-950"],
+  [class*="bg-zinc-800"], [class*="bg-zinc-900"], [class*="bg-zinc-950"],
+  [class*="bg-neutral-800"], [class*="bg-neutral-900"], [class*="bg-neutral-950"],
+  [class*="bg-stone-800"], [class*="bg-stone-900"], [class*="bg-stone-950"],
+  [class*="bg-[#0"], [class*="bg-[#1"], [class*="bg-[#2"],
+  [class*="bg-[var(--ink"], [class*="bg-[var(--navy"], [class*="bg-[var(--bureau-ink"], [class*="bg-[var(--bureau-blue"], [class*="bg-[var(--bureau-teal"]
+) {
+  color: var(--kpss-button-text-on-dark) !important;
+  border-color: var(--kpss-button-border-dark);
+}
+
+:where(.btn-primary, .btn-dark, .btn-accent, .btn-gold, [data-dark-button="true"], [data-button-surface="dark"]) :where(span, strong, small, svg, path, i),
+:is(button, a, [role="button"]):where(
+  [data-active="true"], [data-state="active"], [aria-selected="true"], [aria-pressed="true"], [aria-current="page"], [data-selected="true"],
+  [class*="bg-black"],
+  [class*="bg-slate-800"], [class*="bg-slate-900"], [class*="bg-slate-950"],
+  [class*="bg-gray-800"], [class*="bg-gray-900"], [class*="bg-gray-950"],
+  [class*="bg-zinc-800"], [class*="bg-zinc-900"], [class*="bg-zinc-950"],
+  [class*="bg-neutral-800"], [class*="bg-neutral-900"], [class*="bg-neutral-950"],
+  [class*="bg-stone-800"], [class*="bg-stone-900"], [class*="bg-stone-950"],
+  [class*="bg-[#0"], [class*="bg-[#1"], [class*="bg-[#2"],
+  [class*="bg-[var(--ink"], [class*="bg-[var(--navy"], [class*="bg-[var(--bureau-ink"], [class*="bg-[var(--bureau-blue"], [class*="bg-[var(--bureau-teal"]
+) :where(span, strong, small, svg, path, i) {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* Professional polish: avoid washed-out white pills like the screenshot. */
+:where(.card-surface, .bureau-card, .lab-card, .atlas-card, .archive-card, .surface-glass, .bg-card) :is(button, a, [role="button"]):not(.btn-primary):not(.btn-dark):not(.btn-accent):not(.btn-gold):not([data-dark-button="true"]):not([data-active="true"]):not([aria-current="page"]) {
+  color: var(--kpss-button-text-on-light) !important;
+}
+
+/* Prevent pale active tabs from becoming invisible. */
+:is(button, a, [role="button"]):where([data-state="active"], [aria-selected="true"], [aria-current="page"]) {
+  font-weight: 820;
+}
+
+/* Sidebar links and icons bypass global button contrast overrides */
+aside :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) {
+  color: var(--sb-text-soft) !important;
+}
+aside :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) :where(span, strong, small, svg, path, i),
+aside :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) svg {
+  color: var(--sb-text-soft) !important;
+  fill: none !important;
+  stroke: var(--sb-text-soft) !important;
+}
+
+aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) {
+  color: var(--sb-primary) !important;
+  background-color: rgba(30, 58, 138, 0.09) !important;
+}
+aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) :where(span, strong, small, svg, path, i),
+aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) svg {
+  color: var(--sb-primary) !important;
+  fill: none !important;
+  stroke: var(--sb-primary) !important;
+}
+
+html[data-theme="dark"] aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) {
+  color: var(--sb-primary-2) !important;
+  background-color: rgba(37, 99, 235, 0.15) !important;
+}
+html[data-theme="dark"] aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) :where(span, strong, small, svg, path, i),
+html[data-theme="dark"] aside :is(a, button, [role="button"]):is([data-active="true"], [aria-current="page"]) svg {
+  color: var(--sb-primary-2) !important;
+  fill: none !important;
+  stroke: var(--sb-primary-2) !important;
+}
+
+/* KPSS Tarih - Force dark text on explicitly light containers, in both themes */
+.kpss-light-container,
+.kpss-light-container *,
+.kpss-light-container :where(span, p, h1, h2, h3, h4, strong, small, svg, path, i) {
+  color: #0e1117 !important;
+  stroke: #0e1117 !important;
+}
+
+/* Ensure custom colored passive sidebar icons maintain their colors */
+aside :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) svg.kpss-custom-icon,
+aside :is(a, button, [role="button"]):not([data-active="true"]):not([aria-current="page"]) svg.kpss-custom-icon * {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+/* Chatbot Widget Header Contrast Force */
+.kpss-chatbot-header,
+.kpss-chatbot-header * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+.kpss-chatbot-header button {
+  opacity: 0.80 !important;
+  transition: opacity 150ms ease !important;
+}
+.kpss-chatbot-header button:hover {
+  opacity: 1 !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+

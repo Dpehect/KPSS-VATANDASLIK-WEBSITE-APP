@@ -1,0 +1,11 @@
+import type { Metadata } from "next";
+import { ExamsPage } from "@/features/exams/components/ExamsPage";
+
+export const metadata: Metadata = {
+  title: "Denemeler",
+  description: "KPSS Vatandaşlık deneme merkezi."
+};
+
+export default async function ExamsRoute() {
+  return <ExamsPage />;
+}
