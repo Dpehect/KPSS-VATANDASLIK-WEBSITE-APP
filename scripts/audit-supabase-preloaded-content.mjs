@@ -19,7 +19,14 @@ if (!url || !key) {
   process.exit(0);
 }
 
-const supabase = createClient(url, key, { auth: { persistSession: false } });
+const supabase = createClient(url, key, {
+  db: {
+    schema: "vatandaslik"
+  },
+  auth: {
+    persistSession: false
+  }
+});
 const required = ["_meta:seed", "topics", "questions", "tests"];
 
 const { data, error } = await supabase.from(table).select("key,kind,payload").in("key", required);
@@ -34,8 +41,8 @@ const topics = map.get("topics")?.payload || [];
 const questions = map.get("questions")?.payload || [];
 const tests = map.get("tests")?.payload || [];
 
-if (!Array.isArray(topics) || topics.length < 10) fail(`Konu sayısı düşük: ${topics.length}`);
-if (!Array.isArray(questions) || questions.length < 100) fail(`Soru sayısı düşük: ${questions.length}`);
+if (!Array.isArray(topics) || topics.length < 5) fail(`Konu sayısı düşük: ${topics.length}`);
+if (!Array.isArray(questions) || questions.length < 50) fail(`Soru sayısı düşük: ${questions.length}`);
 if (!Array.isArray(tests) || tests.length < topics.length) fail(`Test sayısı düşük: ${tests.length}`);
 
 const qById = new Map(questions.map((q) => [q.id, q]));

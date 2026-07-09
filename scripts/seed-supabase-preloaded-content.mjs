@@ -249,7 +249,14 @@ async function main() {
   await ensureTable();
   const data = loadLocalData();
   const { bundles, aggregateHash, tests } = buildBundles(data);
-  const supabase = createClient(env.url, env.serviceKey, { auth: { persistSession: false } });
+  const supabase = createClient(env.url, env.serviceKey, {
+    db: {
+      schema: "vatandaslik"
+    },
+    auth: {
+      persistSession: false
+    }
+  });
 
   const { data: meta, error: metaError } = await supabase.from(table).select("payload,content_hash").eq("key", "_meta:seed").maybeSingle();
   if (metaError && !String(metaError.message || "").includes("does not exist")) {
