@@ -112,7 +112,10 @@ export async function getTopicDataBySlug(slug: string): Promise<TopicDataBundle 
 
 export async function getTestsForTopicFromContent(topicId: string, level?: TestLevel): Promise<GeneratedQuestionTest[]> {
   const tests = await getTestsFromContent();
-  return tests.filter((test) => test.topicId === topicId && (!level || test.level === level));
+  const topics = await getTopicsFromContent();
+  const topic = topics.find((item) => item.id === topicId || item.slug === topicId);
+  const resolvedId = topic ? topic.id : topicId;
+  return tests.filter((test) => test.topicId === resolvedId && (!level || test.level === level));
 }
 
 export async function getTestCountsForTopicFromContent(topicId: string) {
@@ -144,8 +147,9 @@ export async function getQuestionBankPageData() {
 
 export async function getTopicQuestionPageData(topicId: string, testId?: string, level?: TestLevel) {
   const [topics, tests] = await Promise.all([getTopicsFromContent(), getTestsFromContent()]);
-  const topic = topicId === "all" ? null : topics.find((item) => item.id === topicId) ?? null;
-  const allTests = tests.filter((test) => test.topicId === topicId);
+  const topic = topicId === "all" ? null : topics.find((item) => item.id === topicId || item.slug === topicId) ?? null;
+  const resolvedTopicId = topic ? topic.id : topicId;
+  const allTests = tests.filter((test) => test.topicId === resolvedTopicId);
   const visibleTests = allTests.filter((test) => !level || test.level === level);
   const selected = testId ? await getTestBundleFromContent(testId) : null;
   return { topics, topic, allTests, visibleTests, selected };

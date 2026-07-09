@@ -218,32 +218,42 @@ export async function getSupabaseTopicById(topicId: string) {
 }
 
 export async function getSupabaseQuestionsByTopic(topicId: string) {
+  const topic = await getSupabaseTopicById(topicId);
+  const resolvedId = topic ? topic.id : topicId;
   const questions = await getSupabaseQuestions();
-  const filtered = questions.filter((question) => question.topicId === topicId);
-  return filtered.length ? filtered : fallbackQuestionsByTopic(topicId);
+  const filtered = questions.filter((question) => question.topicId === resolvedId);
+  return filtered.length ? filtered : fallbackQuestionsByTopic(resolvedId);
 }
 
 export async function getSupabaseFlashcardsByTopic(topicId: string) {
+  const topic = await getSupabaseTopicById(topicId);
+  const resolvedId = topic ? topic.id : topicId;
   const flashcards = await getSupabaseFlashcards();
-  const filtered = flashcards.filter((card) => card.topicId === topicId);
-  return filtered.length ? filtered : fallbackFlashcardsByTopic(topicId);
+  const filtered = flashcards.filter((card) => card.topicId === resolvedId);
+  return filtered.length ? filtered : fallbackFlashcardsByTopic(resolvedId);
 }
 
 export async function getSupabaseTimelineEventsByTopic(topicId: string) {
+  const topic = await getSupabaseTopicById(topicId);
+  const resolvedId = topic ? topic.id : topicId;
   const events = await getSupabaseTimelineEvents();
-  const filtered = events.filter((event) => event.topicId === topicId);
-  return filtered.length ? filtered : fallbackTimelineByTopic(topicId);
+  const filtered = events.filter((event) => event.topicId === resolvedId);
+  return filtered.length ? filtered : fallbackTimelineByTopic(resolvedId);
 }
 
 export async function getSupabaseGlossaryByTopic(topicId: string) {
+  const topic = await getSupabaseTopicById(topicId);
+  const resolvedId = topic ? topic.id : topicId;
   const glossary = await getSupabaseGlossary();
-  const filtered = glossary.filter((item) => item.topicId === topicId || item.period === topicId);
-  return filtered.length ? filtered : (fallbackGlossaryByTopic(topicId) as GlossaryItem[]);
+  const filtered = glossary.filter((item) => item.topicId === resolvedId || item.period === resolvedId);
+  return filtered.length ? filtered : (fallbackGlossaryByTopic(resolvedId) as GlossaryItem[]);
 }
 
 export async function getSupabaseTestsForTopic(topicId: string, level?: TestLevel) {
   const tests = await getSupabaseQuestionTests();
-  const source = topicId === "all" ? tests.filter((test) => test.topicId === "all") : tests.filter((test) => test.topicId === topicId);
+  const topic = topicId === "all" ? null : await getSupabaseTopicById(topicId);
+  const resolvedTopicId = topic ? topic.id : topicId;
+  const source = resolvedTopicId === "all" ? tests.filter((test) => test.topicId === "all") : tests.filter((test) => test.topicId === resolvedTopicId);
   return source.filter((test) => !level || test.level === level);
 }
 
@@ -298,12 +308,13 @@ export async function getQuestionBankOverviewFromSupabase() {
 }
 
 export async function getQuestionSessionFromSupabase(topicId: string, testId?: string, level?: TestLevel) {
-  const [topics, tests] = await Promise.all([getSupabaseTopics(), getSupabaseTestsForTopic(topicId, level)]);
-  const topic = topicId === "all" ? null : topics.find((item) => item.id === topicId);
-  const allTests = await getSupabaseTestsForTopic(topicId);
+  const topic = topicId === "all" ? null : await getSupabaseTopicById(topicId);
+  const resolvedTopicId = topic ? topic.id : topicId;
+  const [topics, tests] = await Promise.all([getSupabaseTopics(), getSupabaseTestsForTopic(resolvedTopicId, level)]);
+  const allTests = await getSupabaseTestsForTopic(resolvedTopicId);
   const selectedTest = testId ? allTests.find((test) => test.id === testId) ?? null : null;
   const selectedQuestions = selectedTest ? await getSupabaseQuestionsForTest(selectedTest.id) : [];
-  const counts = await getSupabaseTestCountsForTopic(topicId);
+  const counts = await getSupabaseTestCountsForTopic(resolvedTopicId);
 
   return {
     topics,
