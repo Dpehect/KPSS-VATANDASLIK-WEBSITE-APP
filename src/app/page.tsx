@@ -33,7 +33,7 @@ export default function HomePage() {
               </div>
 
               <h1 className="mt-6 max-w-5xl text-5xl font-black leading-[0.9] tracking-[-0.085em] text-[#101828] md:text-7xl lg:text-8xl">
-                KPSS Vatandaşlık’i tek ekranda yönet.
+                KPSS Vatandaşlık’ı tek ekranda yönet.
               </h1>
 
               <p className="mt-6 max-w-2xl text-base font-bold leading-8 text-[#475467]">
@@ -59,7 +59,7 @@ export default function HomePage() {
             <aside className="rounded-[2.25rem] border border-white/80 bg-white/82 p-4 shadow-[0_30px_90px_rgba(16,24,40,.12)] backdrop-blur-xl">
               <div className="rounded-[1.8rem] bg-[#101828] p-5 text-white shadow-[0_22px_60px_rgba(16,24,40,.25)]">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-[#f9c784]">Bugünkü öneri</p>
-                <h2 className="mt-3 text-3xl font-black tracking-[-0.055em]">Milli Mücadele odak turu</h2>
+                <h2 className="mt-3 text-3xl font-black tracking-[-0.055em]">Temel Hukuk odak turu</h2>
                 <p className="mt-3 text-sm font-semibold leading-6 text-white/72">
                   25 dakika konu özeti, 30 soruluk test ve hızlı yanlış analizi.
                 </p>
