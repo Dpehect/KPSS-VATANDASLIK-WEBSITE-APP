@@ -56,7 +56,7 @@ if (totalQuestionsCount > 0) {
     exams.push({
       id: config.id,
       title: config.title,
-      description: `KPSS Vatandaşlık müfredatına göre hazırlanan \${config.count} soruluk \${config.difficulty} seviye deneme provası.`,
+      description: `ÖSYM formatına ve güncel KPSS Vatandaşlık müfredatına uygun olarak özenle hazırlanmış ${config.count} soruluk ${config.difficulty} seviye deneme sınavı.`,
       durationMinutes: config.durationMinutes,
       questionIds: selectedIds,
       difficulty: config.difficulty,
