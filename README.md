@@ -18,5 +18,5 @@ Below are the 1x1 promotional square posts designed for Instagram sharing:
 
 | Post 1 (Launch) | Post 2 (Features) | Post 3 (Methods) |
 | :---: | :---: | :---: |
-| ![Instagram Post 1](public/images/promo/insta_1.svg) | ![Instagram Post 2](public/images/promo/insta_2.svg) | ![Instagram Post 3](public/images/promo/insta_3.svg) |
+| ![Instagram Post 1](public/images/promo/vibrant_launch.svg) | ![Instagram Post 2](public/images/promo/vibrant_tests.svg) | ![Instagram Post 3](public/images/promo/vibrant_cards.svg) |
 | **KPSS Vatandaşlık Yayında!** <br> 9000+ Soru & Temel Hukuk Bilgisi | **1500+ Özgün Hukuk Testi!** <br> Kolay, Orta, Zor Seviyeleri | **Aktif Tekrar Kartları** <br> Anayasa ve Hukuku Hafızana Sabitle! |
