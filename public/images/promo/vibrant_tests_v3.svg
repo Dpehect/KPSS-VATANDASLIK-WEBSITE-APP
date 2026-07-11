@@ -61,8 +61,8 @@
   <!-- Constitution Law Book Icon in SVG -->
   <g transform="translate(100, 270) scale(1.6)" filter="url(#intenseGlow)">
     <rect x="15" y="10" width="50" height="70" rx="4" fill="none" stroke="#ffffff" stroke-width="4.5" />
-    <path d="M 23,10 L 23,80" stroke="#ffffff" stroke-width="3" />
-    <path d="M 32,25 L 55,25 M 32,38 L 55,38 M 32,51 L 48,51" stroke="url(#coralGrad)" stroke-width="4" stroke-linecap="round" />
+    <path d="M 23,10 L 23,80" stroke="#ffffff" stroke-width="3" fill="none" />
+    <path d="M 32,25 L 55,25 M 32,38 L 55,38 M 32,51 L 48,51" stroke="url(#coralGrad)" stroke-width="4" stroke-linecap="round" fill="none" />
     <circle cx="15" cy="20" r="3" fill="#f43f5e" />
     <circle cx="15" cy="40" r="3" fill="#facc15" />
     <circle cx="15" cy="60" r="3" fill="#ffffff" />
