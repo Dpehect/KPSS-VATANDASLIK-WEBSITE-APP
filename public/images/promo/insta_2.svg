@@ -1,114 +1,119 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#020617" />
-      <stop offset="40%" stop-color="#0b1329" />
-      <stop offset="100%" stop-color="#1c1917" />
+    <!-- Ultra-vibrant sunset/coral gradient background -->
+    <linearGradient id="vibrantBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" /> <!-- Rose/Coral -->
+      <stop offset="50%" stop-color="#f59e0b" /> <!-- Amber/Gold -->
+      <stop offset="100%" stop-color="#8b5cf6" /> <!-- Violet/Purple -->
     </linearGradient>
-    <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f43f5e" />
-      <stop offset="100%" stop-color="#be123c" />
+    
+    <linearGradient id="coralGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fda4af" />
+      <stop offset="100%" stop-color="#f43f5e" />
     </linearGradient>
-    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.08)" />
-      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.01)" />
+
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.24)" />
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.03)" />
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="15" result="blur" />
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+
+    <filter id="intenseGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="20" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
   </defs>
 
   <!-- Background -->
-  <rect width="800" height="800" fill="url(#bgGrad)" />
+  <rect width="800" height="800" fill="url(#vibrantBg)" />
 
-  <!-- Futuristic Grid -->
-  <g opacity="0.08">
-    <path d="M 0,50 L 800,50 M 0,100 L 800,100 M 0,150 L 800,150 M 0,200 L 800,200 M 0,250 L 800,250 M 0,300 L 800,300 M 0,350 L 800,350 M 0,400 L 800,400 M 0,450 L 800,450 M 0,500 L 800,500 M 0,550 L 800,550 M 0,600 L 800,600 M 0,650 L 800,650 M 0,700 L 800,700 M 0,750 L 800,750" stroke="#ffffff" stroke-width="1" />
-    <path d="M 50,0 L 50,800 M 100,0 L 100,800 M 150,0 L 150,800 M 200,0 L 200,800 M 250,0 L 250,800 M 300,0 L 300,800 M 350,0 L 350,800 M 400,0 L 400,800 M 450,0 L 450,800 M 500,0 L 500,800 M 550,0 L 550,800 M 600,0 L 600,800 M 650,0 L 650,800 M 700,0 L 700,800 M 750,0 L 750,800" stroke="#ffffff" stroke-width="1" />
+  <!-- Floating spheres -->
+  <circle cx="700" cy="150" r="180" fill="#facc15" opacity="0.4" filter="url(#intenseGlow)" />
+  <circle cx="100" cy="650" r="220" fill="#ec4899" opacity="0.4" filter="url(#intenseGlow)" />
+  <circle cx="50" cy="120" r="90" fill="#fb7185" opacity="0.3" filter="url(#intenseGlow)" />
+  <circle cx="750" cy="700" r="130" fill="#a78bfa" opacity="0.3" filter="url(#intenseGlow)" />
+
+  <!-- Top Banner Info -->
+  <rect x="50" y="35" width="700" height="42" rx="21" fill="rgba(255, 255, 255, 0.15)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.5" />
+  <circle cx="75" cy="56" r="6" fill="#ff5f56" />
+  <circle cx="95" cy="56" r="6" fill="#ffbd2e" />
+  <circle cx="115" cy="56" r="6" fill="#27c93f" />
+  <text x="400" y="62" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="14" font-weight="900" fill="#ffffff" letter-spacing="2">
+    DATABASE SEEDING · PERFORMANCE ENGINE
+  </text>
+
+  <!-- Heading -->
+  <g filter="url(#shadow)">
+    <text x="400" y="145" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="52" font-weight="900" fill="#ffffff" letter-spacing="4">
+      1500+ ÖZGÜN HUKUK TESTİ
+    </text>
+    <text x="400" y="195" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="24" font-weight="900" fill="#fef08a" letter-spacing="3">
+      SUPABASE DATABASE & SEEDING TUNING
+    </text>
   </g>
 
-  <!-- Tech Header -->
-  <rect x="50" y="40" width="700" height="44" rx="12" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
-  <circle cx="75" cy="62" r="6" fill="#ef4444" />
-  <circle cx="95" cy="62" r="6" fill="#eab308" />
-  <circle cx="115" cy="62" r="6" fill="#22c55e" />
-  <text x="400" y="68" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="14" font-weight="700" fill="#94a3b8" letter-spacing="1">
-    DATABASE ARCHITECTURE · SEEDING PIPELINE
-  </text>
+  <!-- Main Infographic Glass Panel -->
+  <rect x="60" y="240" width="680" height="290" rx="30" fill="url(#glassGrad)" stroke="rgba(255, 255, 255, 0.35)" stroke-width="2" filter="url(#shadow)" />
+  
+  <!-- Constitution Law Book Icon in SVG -->
+  <g transform="translate(100, 270) scale(1.6)" filter="url(#intenseGlow)">
+    <rect x="15" y="10" width="50" height="70" rx="4" fill="none" stroke="#ffffff" stroke-width="4.5" />
+    <path d="M 23,10 L 23,80" stroke="#ffffff" stroke-width="3" />
+    <path d="M 32,25 L 55,25 M 32,38 L 55,38 M 32,51 L 48,51" stroke="url(#coralGrad)" stroke-width="4" stroke-linecap="round" />
+    <circle cx="15" cy="20" r="3" fill="#f43f5e" />
+    <circle cx="15" cy="40" r="3" fill="#facc15" />
+    <circle cx="15" cy="60" r="3" fill="#ffffff" />
+  </g>
 
-  <!-- Title Section -->
-  <text x="400" y="150" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="46" font-weight="900" fill="#ffffff" letter-spacing="3">
-    1500+ ÖZGÜN HUKUK TESTİ
-  </text>
-  <text x="400" y="200" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="28" font-weight="800" fill="url(#roseGrad)" letter-spacing="2">
-    SUPABASE JSON BUNDLING ENGINE
-  </text>
-
-  <!-- Graphic and Stats Panel -->
-  <g transform="translate(100, 240)">
-    <!-- Glass Panel -->
-    <rect x="0" y="0" width="600" height="280" rx="24" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" />
+  <!-- Spec List -->
+  <g transform="translate(300, 265)" font-family="'Inter', system-ui, sans-serif" font-size="20" font-weight="900" fill="#ffffff" filter="url(#shadow)">
+    <text x="0" y="35" fill="rgba(255,255,255,0.85)">DATABASE ENGINE:</text>
+    <text x="210" y="35" fill="#fef08a">SUPABASE DB (SSR)</text>
     
-    <!-- Legal Document Icon in SVG -->
-    <g transform="translate(50, 40) scale(1.4)" filter="url(#glow)">
-      <rect x="15" y="10" width="50" height="70" rx="4" fill="none" stroke="url(#roseGrad)" stroke-width="4" />
-      <path d="M 23,10 L 23,80" stroke="url(#roseGrad)" stroke-width="3" />
-      <path d="M 32,25 L 55,25 M 32,38 L 55,38 M 32,51 L 48,51" stroke="#fda4af" stroke-width="3" stroke-linecap="round" />
-      <circle cx="15" cy="20" r="3" fill="#f43f5e" />
-      <circle cx="15" cy="40" r="3" fill="#f43f5e" />
-      <circle cx="15" cy="60" r="3" fill="#f43f5e" />
-    </g>
+    <text x="0" y="90" fill="rgba(255,255,255,0.85)">SEED OPTIMIZATION:</text>
+    <text x="210" y="90" fill="#fef08a">BATCH SIZE = 5 (STABLE)</text>
+    
+    <text x="0" y="145" fill="rgba(255,255,255,0.85)">LATENCY TARGET:</text>
+    <text x="210" y="145" fill="#fef08a">ZERO TIMEOUTS</text>
 
-    <!-- Specs List -->
-    <g transform="translate(220, 50)" font-family="'Inter', system-ui, sans-serif" font-size="18" font-weight="700">
-      <text x="0" y="30" fill="#ffffff">DATABASE ENGINE:</text>
-      <text x="210" y="30" fill="#f43f5e">SUPABASE DB (SSR)</text>
-      
-      <text x="0" y="80" fill="#ffffff">SEED OPTIMIZATION:</text>
-      <text x="210" y="80" fill="#f43f5e">BATCH SIZE = 5 (STABLE)</text>
-      
-      <text x="0" y="130" fill="#ffffff">LATENCY TARGET:</text>
-      <text x="210" y="130" fill="#f43f5e">ZERO RUNTIME TIMEOUTS</text>
-
-      <text x="0" y="180" fill="#ffffff">PRELOAD DATA STRUCTURE:</text>
-      <text x="210" y="180" fill="#3b82f6">JSON CONTENT BUNDLES</text>
-    </g>
+    <text x="0" y="200" fill="rgba(255,255,255,0.85)">PRELOAD DATA TYPE:</text>
+    <text x="210" y="200" fill="#60a5fa">JSON DATA BUNDLES</text>
   </g>
 
   <!-- Tech Stack Pills -->
   <g transform="translate(100, 560)">
-    <text x="0" y="-15" font-family="'Inter', system-ui, sans-serif" font-size="14" font-weight="800" fill="#94a3b8" letter-spacing="1">TECHNOLOGY STACK</text>
-    
     <!-- Next.js -->
-    <rect x="0" y="0" width="105" height="36" rx="8" fill="#0f172a" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-    <text x="52" y="23" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="800" fill="#ffffff">Next.js 15</text>
+    <rect x="0" y="0" width="105" height="38" rx="10" fill="#0f172a" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <text x="52" y="24" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="900" fill="#ffffff">Next.js 15</text>
 
     <!-- React -->
-    <rect x="120" y="0" width="105" height="36" rx="8" fill="#0f172a" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-    <text x="172" y="23" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="800" fill="#60a5fa">React 19</text>
+    <rect x="120" y="0" width="105" height="38" rx="10" fill="#0f172a" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <text x="172" y="24" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="900" fill="#60a5fa">React 19</text>
 
     <!-- Supabase -->
-    <rect x="240" y="0" width="115" height="36" rx="8" fill="#0f172a" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-    <text x="297" y="23" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="800" fill="#34d399">Supabase DB</text>
+    <rect x="240" y="0" width="115" height="38" rx="10" fill="#0f172a" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <text x="297" y="24" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="900" fill="#34d399">Supabase</text>
 
     <!-- Tailwind -->
-    <rect x="370" y="0" width="110" height="36" rx="8" fill="#0f172a" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-    <text x="425" y="23" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="800" fill="#38bdf8">Tailwind v4</text>
+    <rect x="370" y="0" width="110" height="38" rx="10" fill="#0f172a" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <text x="425" y="24" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="900" fill="#38bdf8">Tailwind v4</text>
 
     <!-- TS -->
-    <rect x="495" y="0" width="105" height="36" rx="8" fill="#0f172a" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-    <text x="547" y="23" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="800" fill="#3178c6">TypeScript</text>
+    <rect x="495" y="0" width="105" height="38" rx="10" fill="#0f172a" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+    <text x="547" y="24" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="900" fill="#3178c6">TypeScript</text>
   </g>
 
-  <!-- Links Block -->
-  <g transform="translate(100, 640)">
-    <rect x="0" y="0" width="600" height="110" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+  <!-- URL Links Box (Glassmorphism + Strong Readability) -->
+  <g transform="translate(60, 630)">
+    <rect x="0" y="0" width="680" height="120" rx="20" fill="rgba(0, 0, 0, 0.45)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" filter="url(#shadow)" />
     
-    <text x="30" y="42" font-family="'Inter', system-ui, sans-serif" font-size="16" font-weight="700" fill="#94a3b8">LIVE DEMO:</text>
-    <text x="180" y="42" font-family="'Inter', system-ui, sans-serif" font-size="18" font-weight="800" fill="#f43f5e">kpss-vatandaslik-web-app.vercel.app</text>
+    <text x="40" y="48" font-family="'Inter', system-ui, sans-serif" font-size="15" font-weight="900" fill="#94a3b8" letter-spacing="1">LIVE DEMO:</text>
+    <text x="180" y="48" font-family="'Inter', system-ui, sans-serif" font-size="19" font-weight="900" fill="#fb7185">kpss-vatandaslik-web-app.vercel.app</text>
     
-    <text x="30" y="82" font-family="'Inter', system-ui, sans-serif" font-size="16" font-weight="700" fill="#94a3b8">CODE REPO:</text>
-    <text x="180" y="82" font-family="'Inter', system-ui, sans-serif" font-size="18" font-weight="800" fill="#ffffff">github.com/Dpehect/KPSS-Vatandaslik-Web-App</text>
+    <text x="40" y="90" font-family="'Inter', system-ui, sans-serif" font-size="15" font-weight="900" fill="#94a3b8" letter-spacing="1">CODE REPO:</text>
+    <text x="180" y="90" font-family="'Inter', system-ui, sans-serif" font-size="19" font-weight="900" fill="#ffffff">github.com/Dpehect/KPSS-Vatandaslik-Web-App</text>
   </g>
 </svg>
