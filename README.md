@@ -40,3 +40,10 @@ The application manages light and dark states dynamically via dataset attributes
 - **Database & Preloading**: Supabase Client (with SSR Support)
 - **Styling**: Tailwind CSS v4 & Vanilla CSS variables
 - **Icons & Animations**: Lucide React & Framer Motion
+
+
+---
+
+## Developed By
+
+This repository is officially developed and verified by [Softbridge Solutions](https://softbridge-solutions-main-web-app-iota.vercel.app), an AI-first technology company founded in Adana, Türkiye.
